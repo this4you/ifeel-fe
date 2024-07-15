@@ -1,6 +1,7 @@
 import '@fontsource-variable/comfortaa';
 import { defaultTheme } from './app/theme';
 import { CssBaseline, ThemeProvider } from '@mui/material';
+import { AppRouters } from './app/routes/AppRouters.tsx';
 
 
 function App() {
@@ -8,7 +9,7 @@ function App() {
         <>
             <ThemeProvider theme={defaultTheme}>
                 <CssBaseline/>
-                <h1>I feel app</h1>
+                <AppRouters/>
             </ThemeProvider>
         </>
     )
