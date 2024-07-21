@@ -15,9 +15,12 @@
     "@fontsource-variable/comfortaa": "^5.0.20",
     "@mui/icons-material": "^5.16.1",
     "@mui/material": "^5.16.1",
+    "@react-oauth/google": "^0.12.1",
+    "axios": "^1.7.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.24.1"
+    "react-router-dom": "^6.24.1",
+    "zustand": "^4.5.4"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
