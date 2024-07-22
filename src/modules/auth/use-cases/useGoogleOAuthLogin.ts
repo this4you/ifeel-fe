@@ -12,7 +12,7 @@ export const useGoogleOAuthLogin = () => {
 
             localStorage.setItem('tokens', JSON.stringify(tokens));
 
-            navigate('/emotions');
+            navigate('/user');
         },
         onError: errorResponse => console.log(errorResponse),
     })

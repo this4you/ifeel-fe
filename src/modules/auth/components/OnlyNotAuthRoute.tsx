@@ -17,7 +17,7 @@ export const OnlyNotAuthRoute: React.FC<PropsWithChildren> = ({ children }) => {
     }
 
     if (user) {
-        return <Navigate to={'/emotions'}/>
+        return <Navigate to={'/user'}/>
     }
 
     return (

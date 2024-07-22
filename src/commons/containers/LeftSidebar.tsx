@@ -1,7 +1,8 @@
 import { FC, PropsWithChildren } from 'react';
-import { Box, useTheme } from '@mui/material';
+import { Box, Theme, useTheme } from '@mui/material';
+import { SxProps } from '@mui/system/styleFunctionSx';
 
-export const LeftSidebar: FC<PropsWithChildren> = ({ children }) => {
+export const LeftSidebar: FC<PropsWithChildren & { sx?: SxProps<Theme> }> = ({ children, sx }) => {
     const theme = useTheme();
 
     return (
@@ -20,7 +21,8 @@ export const LeftSidebar: FC<PropsWithChildren> = ({ children }) => {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    width: '300px'
+                    width: '300px',
+                    ...(sx || {})
                 }}
             >
                 {children}

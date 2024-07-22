@@ -5,7 +5,7 @@ import {
     Route,
     Navigate, BrowserRouter
 } from 'react-router-dom';
-import { LandingPage, EmotionsPage } from '../pages';
+import { LandingPage, UserHomePage } from '../pages';
 import { OnlyNotAuthRoute, PrivateRoute } from '../../modules/auth/components';
 
 export const AppRouters: React.FC = () => (
@@ -20,10 +20,10 @@ export const AppRouters: React.FC = () => (
                 }>
             </Route>
             <Route
-                path="/emotions"
+                path="/user"
                 element={
                     <PrivateRoute>
-                        <EmotionsPage/>
+                        <UserHomePage/>
                     </PrivateRoute>
                 }></Route>
             <Route
