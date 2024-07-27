@@ -12,7 +12,6 @@ export const useGoogleOAuthLogin = () => {
         onSuccess: async (codeResponse) => {
             setLoading(true);
             const tokens = await getTokensRest(codeResponse.code);
-            setLoading(false);
 
             localStorage.setItem('tokens', JSON.stringify(tokens));
 
