@@ -1,3 +1,11 @@
+import { Box } from '@mui/material';
+
 export const Emotions: React.FC = () => {
-    return (<h3>Emotions</h3>)
+    return (
+        <Box sx={{ width: '100%', height: '100%', }}>
+            <Box sx={{ width: '250px', height: '100%', }}>
+
+            </Box>
+        </Box>
+    );
 }

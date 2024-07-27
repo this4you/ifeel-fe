@@ -15,7 +15,7 @@ export const GoogleLogin: React.FC = () => {
                 {
                     width: '240px',
                     height: '50px',
-                    borderRadius: '20px',
+                    borderRadius: theme.shape.borderRadius * 1.4,
                     display: 'flex',
                     justifyContent: 'space-evenly',
                     alignItems: 'center',

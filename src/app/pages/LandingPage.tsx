@@ -2,11 +2,10 @@ import { PageContainer } from '@commons/containers/PageContainer.tsx';
 import { LeftSidebar, MainContent } from '@commons/containers';
 import { LogoDark, LogoLight } from '@commons/components';
 import { GoogleLogin } from '@auth/components';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, useTheme } from '@mui/material';
 
 export const LandingPage = () => {
-
-
+    const theme = useTheme();
     return (
         <PageContainer>
             <LeftSidebar>
@@ -36,7 +35,7 @@ export const LandingPage = () => {
                     maxHeight: '450px',
                     backgroundColor: 'white',
                     padding: '45px',
-                    borderRadius: '40px'
+                    borderRadius: theme.shape.borderRadius,
                 }}>
                     <Typography variant='h5'>
                         What do you feel?

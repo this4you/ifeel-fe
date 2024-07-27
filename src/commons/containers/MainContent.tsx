@@ -8,7 +8,8 @@ export const MainContent: FC<PropsWithChildren> = ({ children }) => (
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-evenly',
-        borderRadius: '40px 0 0 40px',
+        borderTopLeftRadius: theme.shape.borderRadius * 10,
+        borderBottomLeftRadius: theme.shape.borderRadius * 10,
         backgroundColor: theme.palette.background.default
     })}>
         {children}
