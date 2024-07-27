@@ -27,14 +27,6 @@ export const LeftSidebar: FC<PropsWithChildren & { sx?: SxProps<Theme> }> = ({ c
             >
                 {children}
             </Box>
-            <Box
-                sx={{
-                    backgroundColor: '#F5F5F5',
-                    height: '100%',
-                    width: '40px',
-                    borderRadius: '50px 0 0 50px'
-                }}
-            />
         </Box>
     )
 };
