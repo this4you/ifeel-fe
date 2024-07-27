@@ -3,6 +3,7 @@ import { defaultTheme } from './app/theme';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { AppRouters } from './app/routes/AppRouters.tsx';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import { AppLoader } from './modules/auth/components/AppLoader.tsx';
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
                 <ThemeProvider theme={defaultTheme}>
                     <CssBaseline/>
                     <AppRouters/>
+                    <AppLoader/>
                 </ThemeProvider>
             </GoogleOAuthProvider>
         </>

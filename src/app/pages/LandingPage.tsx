@@ -1,7 +1,7 @@
-import { PageContainer } from '../../commons/containers/PageContainer.tsx';
-import { LeftSidebar, MainContent } from '../../commons/containers';
-import { LogoDark, LogoLight } from '../../commons/components';
-import { GoogleLogin } from '../../modules/auth';
+import { PageContainer } from '@commons/containers/PageContainer.tsx';
+import { LeftSidebar, MainContent } from '@commons/containers';
+import { LogoDark, LogoLight } from '@commons/components';
+import { GoogleLogin } from '@auth/components';
 import { Box, Typography } from '@mui/material';
 
 export const LandingPage = () => {

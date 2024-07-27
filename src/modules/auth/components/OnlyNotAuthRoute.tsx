@@ -2,9 +2,11 @@ import React, { PropsWithChildren, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useUserStore } from '../state/useUserStore.ts';
 import { useInitUserInfo } from '../use-cases/useInitUserInfo.ts';
+import { useAppLoadingStore } from '@commons/state/useAppLoadingStore.ts';
 
 export const OnlyNotAuthRoute: React.FC<PropsWithChildren> = ({ children }) => {
-    const { user, isLoading } = useUserStore();
+    const { isLoading } = useAppLoadingStore();
+    const { user } = useUserStore();
 
     const initUserInfo = useInitUserInfo();
 

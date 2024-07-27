@@ -1,14 +1,17 @@
 import { getUserInfoRest } from '../api/getUserInfoRest.ts';
 import { useUserStore } from '../state/useUserStore.ts';
+import { useAppLoadingStore } from '@commons/state/useAppLoadingStore.ts';
 
 export const useInitUserInfo = () => {
-    const { setUser, setLoading, user } = useUserStore();
+    const {setLoading: setAppLoading} = useAppLoadingStore();
+
+    const { setUser, user } = useUserStore();
 
     return async () => {
         if (user) return;
 
         try {
-            setLoading(true);
+            setAppLoading(true);
 
             const userInfo = await getUserInfoRest();
 
@@ -16,7 +19,9 @@ export const useInitUserInfo = () => {
         } catch (e) {
             console.error('Error happens during init user info', e);
         } finally {
-            setLoading(false);
+            setTimeout(() => {
+                setAppLoading(false);
+            }, 1000);
         }
     }
 }
