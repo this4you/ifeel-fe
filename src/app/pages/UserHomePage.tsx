@@ -1,7 +1,7 @@
 import { PageContainer } from '../../commons/containers/PageContainer.tsx';
 import { LeftSidebar, MainContent } from '../../commons/containers';
 import { LogoLight } from '../../commons/components';
-import { UserAvatar } from '../../modules/auth/components';
+import { UserAvatar, UserLogOut } from '../../modules/auth/components';
 
 export const UserHomePage = () => (
     <PageContainer>
@@ -12,6 +12,7 @@ export const UserHomePage = () => (
                 style={{ marginTop: '50px', marginBottom: '50px' }}
             />
             <UserAvatar/>
+            <UserLogOut/>
         </LeftSidebar>
         <MainContent/>
     </PageContainer>

@@ -8,6 +8,8 @@ export const useInitUserInfo = () => {
         if (user) return;
 
         try {
+            setLoading(true);
+
             const userInfo = await getUserInfoRest();
 
             setUser(userInfo);

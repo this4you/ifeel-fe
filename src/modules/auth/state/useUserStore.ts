@@ -4,7 +4,7 @@ import { UserInfo } from '../models/UserInfo.ts';
 type UserStore = {
     user: UserInfo | null;
     isLoading: boolean;
-    setUser: (user: UserInfo) => void;
+    setUser: (user: UserInfo | null) => void;
     setLoading: (isLoading: boolean) => void;
 }
 
