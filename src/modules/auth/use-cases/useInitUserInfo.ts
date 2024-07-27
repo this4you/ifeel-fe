@@ -3,8 +3,7 @@ import { useUserStore } from '../state/useUserStore.ts';
 import { useAppLoadingStore } from '@commons/state/useAppLoadingStore.ts';
 
 export const useInitUserInfo = () => {
-    const {setLoading: setAppLoading} = useAppLoadingStore();
-
+    const { setLoading: setAppLoading } = useAppLoadingStore();
     const { setUser, user } = useUserStore();
 
     return async () => {

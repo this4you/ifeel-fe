@@ -2,6 +2,7 @@ import { PageContainer } from '../../commons/containers/PageContainer.tsx';
 import { LeftSidebar, MainContent } from '../../commons/containers';
 import { LogoLight } from '../../commons/components';
 import { UserAvatar, UserLogOut } from '../../modules/auth/components';
+import { Outlet } from 'react-router-dom';
 
 export const UserHomePage = () => (
     <PageContainer>
@@ -14,6 +15,8 @@ export const UserHomePage = () => (
             <UserAvatar/>
             <UserLogOut/>
         </LeftSidebar>
-        <MainContent/>
+        <MainContent>
+            <Outlet/>
+        </MainContent>
     </PageContainer>
 );

@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import { LandingPage, UserHomePage } from '../pages';
 import { OnlyNotAuthRoute, PrivateRoute } from '../../modules/auth/components';
+import { Emotions } from '../../modules/emotions/components';
 
 export const AppRouters: React.FC = () => (
     <BrowserRouter>
@@ -25,7 +26,23 @@ export const AppRouters: React.FC = () => (
                     <PrivateRoute>
                         <UserHomePage/>
                     </PrivateRoute>
-                }></Route>
+                }
+            >
+                <Route
+                    index
+                    element={<Navigate to="/user/emotions" replace />}
+                />
+                <Route
+                    path="/user/emotions"
+                    element={
+                        <Emotions/>
+                    }
+                />
+                <Route
+                    path="/user/*"
+                    element={<Navigate to="/user/emotions" replace/>}
+                />
+            </Route>
             <Route
                 path="*"
                 element={<Navigate to="/" replace/>}
