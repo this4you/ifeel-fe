@@ -1,11 +1,12 @@
-import { Box, useTheme } from '@mui/material';
+import { Box } from '@mui/material';
+import { EmotionSet } from '../../models/EmotionSet.ts';
 
-export const EmotionsSetItem: React.FC = () => {
+export const EmotionsSetItem: React.FC<{ emotionSet: EmotionSet }> = () => {
     // const { spacing } = useTheme();
 
     return (
-        <Box sx={{ width: '250px', height: '100%', }}>
-
+        <Box sx={{ width: '100%', height: '100px', }}>
+            Emotion item
         </Box>
     );
 }

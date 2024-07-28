@@ -3,6 +3,7 @@ import { MdOutlineCreate } from 'react-icons/md';
 import { RiMenuSearchLine } from 'react-icons/ri';
 import { CiViewList } from 'react-icons/ci';
 import { useEmotionSetsStore } from '../../state/useEmotionSetsStore.ts';
+import { EmotionsSetItem } from './EmotionsSetItem.tsx';
 
 export const EmotionsSets: React.FC = () => {
     const { spacing, palette } = useTheme();
@@ -39,9 +40,19 @@ export const EmotionsSets: React.FC = () => {
                             <Typography variant={'subtitle1'}>
                                 No emotions :(
                             </Typography>
-
                         </Stack>
                     </Box>
+                )
+            }
+            {
+                emotionSets.length > 0 && (
+                    <Stack direction={'column'}>
+                        {
+                            emotionSets.map(emotionSet => (
+                                <EmotionsSetItem emotionSet={emotionSet}/>
+                            ))
+                        }
+                    </Stack>
                 )
             }
         </Box>
