@@ -1,11 +1,17 @@
 import { create } from 'zustand';
 
-type PageLoadingState = {
+type AppLoadingState = {
     isLoading: boolean;
-    setLoading: (isLoading: boolean) => void;
+    showLoader: () => void;
+    hideLoader: () => void;
 }
 
-export const useAppLoadingStore = create<PageLoadingState>((set) => ({
+export const useAppLoadingStore = create<AppLoadingState>((set) => ({
     isLoading: true,
-    setLoading: isLoading => set(() => ({ isLoading })),
+    showLoader: () => set({ isLoading: true }),
+    hideLoader: () => {
+        setTimeout(() => {
+            set({ isLoading: false })
+        }, 700);
+    },
 }));

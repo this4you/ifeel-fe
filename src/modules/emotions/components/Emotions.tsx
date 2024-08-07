@@ -15,7 +15,6 @@ export const Emotions: React.FC = () => {
                 borderLeft: `1px solid ${palette.divider}`
             }}>
                 <EmotionsList/>
-
             </Box>
         </Box>
     );

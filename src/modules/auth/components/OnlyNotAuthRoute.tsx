@@ -14,7 +14,7 @@ export const OnlyNotAuthRoute: React.FC<PropsWithChildren> = ({ children }) => {
         initUserInfo();
     }, []);
 
-    if (isLoading) {
+    if (isLoading && !user) {
         return <></>;
     }
 

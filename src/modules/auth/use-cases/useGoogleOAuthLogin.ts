@@ -5,12 +5,13 @@ import { useAppLoadingStore } from '@commons/state/useAppLoadingStore.ts';
 
 export const useGoogleOAuthLogin = () => {
     const navigate = useNavigate();
-    const { setLoading } = useAppLoadingStore();
+    const { showLoader } = useAppLoadingStore();
 
     return useGoogleLogin({
         flow: 'auth-code',
         onSuccess: async (codeResponse) => {
-            setLoading(true);
+            showLoader();
+
             const tokens = await getTokensRest(codeResponse.code);
 
             localStorage.setItem('tokens', JSON.stringify(tokens));

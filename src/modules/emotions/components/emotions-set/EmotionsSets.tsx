@@ -4,10 +4,19 @@ import { RiMenuSearchLine } from 'react-icons/ri';
 import { CiViewList } from 'react-icons/ci';
 import { useEmotionSetsStore } from '../../state/useEmotionSetsStore.ts';
 import { EmotionsSetItem } from './EmotionsSetItem.tsx';
+import { useInitEmotionSets } from '../../use-cases/useInitEmotionSets.ts';
+import { useEffect } from 'react';
 
 export const EmotionsSets: React.FC = () => {
     const { spacing, palette } = useTheme();
     const { emotionSets } = useEmotionSetsStore();
+
+    const initEmotionSets = useInitEmotionSets();
+
+    useEffect(() => {
+        console.log('USE EFFECT ')
+        initEmotionSets()
+    }, []);
 
     return (
         <Box sx={{ width: '250px', height: '100%', }}>
