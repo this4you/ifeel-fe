@@ -18,7 +18,7 @@ export const UserLogOut: React.FC = () => {
             sx={{
                 cursor: 'pointer'
             }}>
-            <MdLogout size={'50'}/>
+            <MdLogout size={'30'}/>
             <Typography variant={'subtitle2'}>
                 Log out
             </Typography>

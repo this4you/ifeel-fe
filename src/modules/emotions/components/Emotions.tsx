@@ -12,18 +12,26 @@ export const Emotions: React.FC = () => {
         <Box sx={{ width: '100%', height: '100%', display: 'flex' }}>
             <EmotionsSets/>
             <Box sx={{
+                display: 'flex',
                 height: '100%',
                 backgroundColor: palette.common.white,
                 flex: '1',
                 borderLeft: `1px solid ${palette.divider}`,
-                display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center'
             }}>
                 {
                     isMoodSelectorVisible
                         ? <MoodSelector/>
-                        : <EmotionsList/>
+                        : (
+                            <Box sx={{
+                                display: 'flex',
+                                width: '100%',
+                                height: '100%',
+                            }}>
+                                <EmotionsList/>
+                            </Box>
+                        )
                 }
             </Box>
         </Box>

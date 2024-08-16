@@ -11,7 +11,7 @@ type EmotionsSetsStore = {
 
 export const useEmotionSetsStore = create<EmotionsSetsStore>((set) => ({
     emotionSets: [],
-    isMoodSelectorVisible: false,
+    isMoodSelectorVisible: true,
     setEmotionsSets: emotionSets => set(() => ({ emotionSets })),
     addEmotionsSet: emotionSet => set(({ emotionSets }) => ({
         emotionSets: [...emotionSets, emotionSet]
