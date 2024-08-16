@@ -1,5 +1,6 @@
 import { Box, Button, Fade, IconContainerProps, Rating, styled, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
+import { useCreateEmotionSet } from '../../use-cases/useCreateEmotionSet.ts';
 
 
 const StyledRating = styled(Rating)(({ theme }) => ({
@@ -79,8 +80,16 @@ function IconContainer(props: IconContainerProps) {
 
 
 export const MoodSelector: React.FC = () => {
-    const [mood, setMood] = useState<number | null>(null);
-    const isConfirmVisible = mood !== null;
+    const [moodScore, setMoodScore] = useState<number | null>(null);
+    const isConfirmVisible = moodScore !== null;
+
+    const createEmotionSet = useCreateEmotionSet();
+
+    const onConfirmClick = useCallback(() => {
+        if (moodScore) {
+            createEmotionSet(moodScore)
+        }
+    }, [moodScore, createEmotionSet])
 
     return (
         <Box sx={{
@@ -97,13 +106,15 @@ export const MoodSelector: React.FC = () => {
                 IconContainerComponent={IconContainer}
                 getLabelText={(value: number) => customIcons[value].label}
                 highlightSelectedOnly
-                onChange={(_, value) => setMood(value)}
+                onChange={(_, value) => setMoodScore(value)}
             />
             {
                 <Fade in={isConfirmVisible}>
                     <Button
                         sx={{ marginTop: 2 }}
-                        variant={'contained'}>
+                        variant={'contained'}
+                        onClick={onConfirmClick}
+                    >
                         Confirm
                     </Button>
                 </Fade>
