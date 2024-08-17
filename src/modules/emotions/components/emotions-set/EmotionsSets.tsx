@@ -1,15 +1,18 @@
 import { Box, Stack, Typography, useTheme } from '@mui/material';
 import { MdOutlineCreate } from 'react-icons/md';
+import { MdDeleteOutline } from 'react-icons/md';
 import { RiMenuSearchLine } from 'react-icons/ri';
 import { CiViewList } from 'react-icons/ci';
 import { useEmotionSetsStore } from '../../state/useEmotionSetsStore.ts';
 import { EmotionsSetItem } from './EmotionsSetItem.tsx';
 import { useInitEmotionSets } from '../../use-cases/useInitEmotionSets.ts';
 import { useEffect } from 'react';
+import { useDeleteActiveEmotionSet } from '../../use-cases/useDeleteActiveEmotionSet.ts';
 
 export const EmotionsSets: React.FC = () => {
     const { spacing, palette } = useTheme();
-    const { emotionSets } = useEmotionSetsStore();
+    const { emotionSets, activeEmotionSetId } = useEmotionSetsStore();
+    const deleteActiveEmotionSet = useDeleteActiveEmotionSet();
 
     const initEmotionSets = useInitEmotionSets();
 
@@ -27,6 +30,13 @@ export const EmotionsSets: React.FC = () => {
                     <Stack direction={'row'} spacing="10px">
                         <MdOutlineCreate size={'20px'} cursor={'pointer'}/>
                         <RiMenuSearchLine size={'20px'} cursor={'pointer'}/>
+                        {activeEmotionSetId &&
+                            <MdDeleteOutline
+                                size={'20px'}
+                                cursor={'pointer'}
+                                onClick={deleteActiveEmotionSet}
+                            />
+                        }
                     </Stack>
                 </Stack>
             </Box>
