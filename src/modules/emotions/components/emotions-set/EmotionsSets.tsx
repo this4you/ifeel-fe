@@ -11,7 +11,7 @@ import { useDeleteActiveEmotionSet } from '../../use-cases/useDeleteActiveEmotio
 import { useDisplayMoodSelector } from '../../use-cases/useDisplayMoodSelector.ts';
 
 export const EmotionsSets: React.FC = () => {
-    const { spacing, palette } = useTheme();
+    const {  palette } = useTheme();
     const { emotionSets, activeEmotionSetId } = useEmotionSetsStore();
 
     const displayMoodSelector = useDisplayMoodSelector();
@@ -24,8 +24,18 @@ export const EmotionsSets: React.FC = () => {
 
     return (
         <Box sx={{ width: '250px', height: '100%', }}>
-            <Box padding={spacing(3)}>
-                <Stack direction="row" justifyContent="space-between" alignItems={'center'}>
+            <Box sx={{
+                display: 'flex',
+                justifyContent:'center',
+                width: '100%',
+                height: '75px',
+            }}>
+                <Stack
+                    width={'80%'}
+                    direction="row"
+                    justifyContent="space-between"
+                    alignItems={'center'}
+                >
                     <Typography variant="subtitle1">
                         Emotions
                     </Typography>
