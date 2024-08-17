@@ -8,12 +8,14 @@ import { EmotionsSetItem } from './EmotionsSetItem.tsx';
 import { useInitEmotionSets } from '../../use-cases/useInitEmotionSets.ts';
 import { useEffect } from 'react';
 import { useDeleteActiveEmotionSet } from '../../use-cases/useDeleteActiveEmotionSet.ts';
+import { useDisplayMoodSelector } from '../../use-cases/useDisplayMoodSelector.ts';
 
 export const EmotionsSets: React.FC = () => {
     const { spacing, palette } = useTheme();
     const { emotionSets, activeEmotionSetId } = useEmotionSetsStore();
-    const deleteActiveEmotionSet = useDeleteActiveEmotionSet();
 
+    const displayMoodSelector = useDisplayMoodSelector();
+    const deleteActiveEmotionSet = useDeleteActiveEmotionSet();
     const initEmotionSets = useInitEmotionSets();
 
     useEffect(() => {
@@ -28,8 +30,15 @@ export const EmotionsSets: React.FC = () => {
                         Emotions
                     </Typography>
                     <Stack direction={'row'} spacing="10px">
-                        <MdOutlineCreate size={'20px'} cursor={'pointer'}/>
-                        <RiMenuSearchLine size={'20px'} cursor={'pointer'}/>
+                        <MdOutlineCreate
+                            size={'20px'}
+                            cursor={'pointer'}
+                            onClick={displayMoodSelector}
+                        />
+                        <RiMenuSearchLine
+                            size={'20px'}
+                            cursor={'pointer'}
+                        />
                         {activeEmotionSetId &&
                             <MdDeleteOutline
                                 size={'20px'}
