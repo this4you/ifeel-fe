@@ -1,6 +1,7 @@
 import { Box, Button, Fade, IconContainerProps, Rating, styled, Typography } from '@mui/material';
 import React, { useCallback, useState } from 'react';
 import { useCreateEmotionSet } from '../../use-cases/useCreateEmotionSet.ts';
+import { getMoodScoreItem } from '../../utils/getMoodScoreItem.tsx';
 
 
 const StyledRating = styled(Rating)(({ theme }) => ({
@@ -8,54 +9,6 @@ const StyledRating = styled(Rating)(({ theme }) => ({
         color: theme.palette.action.disabled,
     },
 }));
-
-const customIcons: {
-    [index: string]: {
-        icon: React.ReactElement;
-        label: string;
-    };
-} = {
-    1: {
-        icon: <span>😢</span>,
-        label: '',
-    },
-    2: {
-        icon: <span>😞</span>,
-        label: '',
-    },
-    3: {
-        icon: <span>😟</span>,
-        label: '',
-    },
-    4: {
-        icon: <span>😐</span>,
-        label: '',
-    },
-    5: {
-        icon: <span>😌</span>,
-        label: '',
-    },
-    6: {
-        icon: <span>🙂</span>,
-        label: '',
-    },
-    7: {
-        icon: <span>😃</span>,
-        label: '',
-    },
-    8: {
-        icon: <span>😊</span>,
-        label: 'Neutral',
-    },
-    9: {
-        icon: <span>😍</span>,
-        label: 'Satisfied',
-    },
-    10: {
-        icon: <span>😎</span>,
-        label: 'Very Satisfied',
-    },
-};
 
 function IconContainer(props: IconContainerProps) {
     const { value, ...other } = props;
@@ -70,7 +23,7 @@ function IconContainer(props: IconContainerProps) {
                 padding: '10px'
             }}
             {...other}>
-            {customIcons[value].icon}
+            {getMoodScoreItem(value)?.icon}
             <Typography variant={'subtitle2'}>
                 {value}
             </Typography>
@@ -104,7 +57,7 @@ export const MoodSelector: React.FC = () => {
                 name="highlight-selected-only"
                 max={10}
                 IconContainerComponent={IconContainer}
-                getLabelText={(value: number) => customIcons[value].label}
+                getLabelText={(value: number) => getMoodScoreItem(value).label}
                 highlightSelectedOnly
                 onChange={(_, value) => setMoodScore(value)}
             />

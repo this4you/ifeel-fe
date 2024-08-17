@@ -14,7 +14,6 @@ export const EmotionsSets: React.FC = () => {
     const initEmotionSets = useInitEmotionSets();
 
     useEffect(() => {
-        console.log('USE EFFECT ')
         initEmotionSets()
     }, []);
 
@@ -58,7 +57,7 @@ export const EmotionsSets: React.FC = () => {
                     <Stack direction={'column'}>
                         {
                             emotionSets.map(emotionSet => (
-                                <EmotionsSetItem emotionSet={emotionSet}/>
+                                <EmotionsSetItem key={emotionSet.id} emotionSet={emotionSet}/>
                             ))
                         }
                     </Stack>
