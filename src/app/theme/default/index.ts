@@ -9,14 +9,23 @@ export const defaultTheme = responsiveFontSizes(createTheme({
         },
     },
     components: {
-      MuiButton: {
-          styleOverrides: {
-              root: css`
-                  text-transform: none;
-                  border-radius: 2rem;
-              `
-          }
-      }
+        MuiButton: {
+            styleOverrides: {
+                root: css`
+                    text-transform: none;
+                    border-radius: 2rem;
+                `
+            }
+        },
+        MuiTextField: {
+            styleOverrides: {
+                root: css`
+                    .MuiOutlinedInput-notchedOutline {
+                        border-radius: 1em;
+                    }
+                `
+            }
+        }
     },
     typography: {
         fontSize: 15,

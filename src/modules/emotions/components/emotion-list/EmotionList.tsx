@@ -1,4 +1,4 @@
-import { Box, Stack, Typography, useTheme } from '@mui/material';
+import { alpha, Box, Stack, Typography, useTheme } from '@mui/material';
 import { MdDeleteOutline, MdOutlineCreate } from 'react-icons/md';
 
 export const EmotionsList: React.FC = () => {
@@ -40,10 +40,8 @@ export const EmotionsList: React.FC = () => {
                     alignItems: 'center',
                     width: '90%',
                     height: '70px',
-                    // borderBottom: '1px solid',
-                    // borderBottomColor: 'divider',
                     padding: 2,
-                    backgroundColor: 'divider',
+                    backgroundColor: alpha(palette.primary.main, 0.3),
                     borderRadius: '10px'
                 }}>
                     <Typography variant={'subtitle2'}>
