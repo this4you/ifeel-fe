@@ -12,6 +12,6 @@ export const useAppLoadingStore = create<AppLoadingState>((set) => ({
     hideLoader: () => {
         setTimeout(() => {
             set({ isLoading: false })
-        }, 700);
+        }, 300);
     },
 }));

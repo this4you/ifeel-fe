@@ -9,7 +9,7 @@ const moodScoreItems: {
     [index: string]: MoodScoreItem;
 } = {
     1: {
-        icon: <span>😢</span>,
+        icon: <span>😨</span>,
         label: '',
     },
     2: {

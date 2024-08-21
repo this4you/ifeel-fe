@@ -1,9 +1,9 @@
 export type Emotion = {
-    id: string;
+    id: string | null;
     name: string;
     description: string;
-    childNeed: string;
-    schema: string;
-    futureActions: string;
-    usefulConversation: string;
+    childNeed: string | null;
+    schema: string | null;
+    futureActions: string | null;
+    usefulConversation: string | null;
 };

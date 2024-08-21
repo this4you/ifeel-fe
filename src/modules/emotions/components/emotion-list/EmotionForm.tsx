@@ -1,20 +1,41 @@
-import { Box, Button, Stack, TextField } from '@mui/material';
+import { Box, Button, Stack } from '@mui/material';
 import { LogoDark } from '@commons/components';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { FormWrapper } from '@commons/components/form/FormWrapper.tsx';
 import { Emotion } from '../../models/Emotion.ts';
 import { FormTextField } from '@commons/components/form/FormTextField.tsx';
+import { useFormContext } from 'react-hook-form';
+import { useSaveEmotion } from '../../use-cases/useSaveEmotion.ts';
+import { useGetEmotionFormDefaultValue } from '../../use-cases/useGetEmotionFormDefaultValue.ts';
 
 export const EmotionForm: React.FC = () => {
+    const getEmotionsFormDefaultValue = useGetEmotionFormDefaultValue();
+
+    const saveEmotion = useSaveEmotion();
+
     return (
-        <FormWrapper submit={(data: Emotion) => {
-            console.log('FORM DATA', data);
+        <FormWrapper defaultValues={getEmotionsFormDefaultValue()} submit={(data: Emotion) => {
+            saveEmotion(data);
         }}>
+            <EmotionFormContent/>
+        </FormWrapper>
+    );
+}
+
+
+const EmotionFormContent: React.FC = () => {
+    const { reset, formState: { isDirty } } = useFormContext();
+
+    const onCancelClick = useCallback(() => {
+        reset();
+    }, [reset]);
+
+    return (
         <Box
             sx={{
                 display: 'flex',
                 flexDirection: 'column',
-                width: '100%'
+                width: '100%',
             }}
         >
             <Box sx={{
@@ -31,6 +52,7 @@ export const EmotionForm: React.FC = () => {
                 marginInline={2}
                 marginTop={1}
                 overflow={'scroll'}
+                paddingTop={'6px'}
             >
                 <FormTextField
                     required
@@ -48,7 +70,7 @@ export const EmotionForm: React.FC = () => {
                     name="description"
                     label="Description"
                     multiline
-                    rows='4'
+                    rows="4"
                 />
                 <FormTextField
                     fullWidth
@@ -71,7 +93,7 @@ export const EmotionForm: React.FC = () => {
                     name="usefulConversation"
                     label="Conversation with child"
                     multiline
-                    rows='4'
+                    rows="4"
                 />
                 <FormTextField
                     fullWidth
@@ -80,7 +102,7 @@ export const EmotionForm: React.FC = () => {
                     name="futureActions"
                     label="Future actions"
                     multiline
-                    rows='4'
+                    rows="4"
                 />
             </Stack>
             <Box sx={{
@@ -89,16 +111,25 @@ export const EmotionForm: React.FC = () => {
                 justifyContent: 'center',
                 width: '95%'
             }}>
-                <Stack direction='row' spacing={1} width={'100%'} justifyContent={'end'}>
-                    <Button sx={{width: '90px'}} variant={'contained'} color={'inherit'}>
+                <Stack direction="row" spacing={1} width={'100%'} justifyContent={'end'}>
+                    <Button
+                        sx={{ width: '90px' }}
+                        variant={'contained'}
+                        color={'inherit'}
+                        onClick={onCancelClick}
+                        disabled={!isDirty}
+                    >
                         Cancel
                     </Button>
-                    <Button type={'submit'} variant={'contained'}>
+                    <Button
+                        type={'submit'}
+                        variant={'contained'}
+                        disabled={!isDirty}
+                    >
                         Save
                     </Button>
                 </Stack>
             </Box>
         </Box>
-        </FormWrapper>
     );
 }

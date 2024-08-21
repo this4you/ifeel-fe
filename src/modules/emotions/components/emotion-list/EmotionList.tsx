@@ -1,8 +1,23 @@
-import { alpha, Box, Stack, Typography, useTheme } from '@mui/material';
+import { Box, Stack, useTheme } from '@mui/material';
 import { MdDeleteOutline, MdOutlineCreate } from 'react-icons/md';
+import { useInitEmotions } from '../../use-cases/useInitEmotions.ts';
+import { useEffect } from 'react';
+import { useEmotionSetsStore } from '../../state/useEmotionSetsStore.ts';
+import { useEmotionsStore } from '../../state/useEmotionsStore.ts';
+import { EmotionItem } from './EmotionItem.tsx';
 
 export const EmotionsList: React.FC = () => {
     const { palette } = useTheme();
+    const { activeEmotionSetId } = useEmotionSetsStore();
+    const { isNewEmotionVisible, emotions } = useEmotionsStore();
+
+    const initEmotions = useInitEmotions();
+
+    useEffect(() => {
+        if (activeEmotionSetId) {
+            initEmotions(activeEmotionSetId);
+        }
+    }, [activeEmotionSetId]);
 
     return (
         <Box sx={{
@@ -35,19 +50,20 @@ export const EmotionsList: React.FC = () => {
                 </Stack>
             </Box>
             <Stack direction={'column'} alignItems={'center'}>
-                <Box sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    width: '90%',
-                    height: '70px',
-                    padding: 2,
-                    backgroundColor: alpha(palette.primary.main, 0.3),
-                    borderRadius: '10px'
-                }}>
-                    <Typography variant={'subtitle2'}>
-                        New emotion
-                    </Typography>
-                </Box>
+                {isNewEmotionVisible && (
+                    <EmotionItem emotion={{ name: 'New emotion' }}/>
+                )}
+                {
+                    emotions.length > 0 && (
+                        <>
+                            {
+                                emotions.map(emotion => (
+                                    <EmotionItem key={emotion.id} emotion={emotion}/>
+                                ))
+                            }
+                        </>
+                    )
+                }
             </Stack>
         </Box>
     );

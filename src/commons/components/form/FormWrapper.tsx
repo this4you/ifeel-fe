@@ -3,10 +3,10 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 type FormWrapperProps<Form extends Record<string, any>> = {
     submit(data: Form): void;
-    defaultValues?: Partial<Form>;
+    defaultValues: Partial<Form> | null;
 } & PropsWithChildren
 
-export const FormWrapper = <T extends Record<string, any>>({submit, defaultValues, children}: FormWrapperProps<T>) => {
+export const FormWrapper = <T extends Record<string, any>>({submit, defaultValues = null, children}: FormWrapperProps<T>) => {
     const form = useForm<T>({
         values: defaultValues as T,
         mode: 'onChange',
