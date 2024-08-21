@@ -5,11 +5,14 @@ import { useEffect } from 'react';
 import { useEmotionSetsStore } from '../../state/useEmotionSetsStore.ts';
 import { useEmotionsStore } from '../../state/useEmotionsStore.ts';
 import { EmotionItem } from './EmotionItem.tsx';
+import { useAddNewEmotion } from '../../use-cases/useAddNewEmotion.ts';
 
 export const EmotionsList: React.FC = () => {
     const { palette } = useTheme();
     const { activeEmotionSetId } = useEmotionSetsStore();
-    const { isNewEmotionVisible, emotions } = useEmotionsStore();
+    const { isNewEmotionVisible, emotions, activeEmotionId } = useEmotionsStore();
+
+    const addNewEmotion = useAddNewEmotion();
 
     const initEmotions = useInitEmotions();
 
@@ -40,6 +43,7 @@ export const EmotionsList: React.FC = () => {
                     <Stack direction={'row'} spacing="10px">
                         <MdOutlineCreate
                             size={'20px'}
+                            onClick={addNewEmotion}
                             cursor={'pointer'}
                         />
                         <MdDeleteOutline
@@ -51,14 +55,18 @@ export const EmotionsList: React.FC = () => {
             </Box>
             <Stack direction={'column'} alignItems={'center'}>
                 {isNewEmotionVisible && (
-                    <EmotionItem emotion={{ name: 'New emotion' }}/>
+                    <EmotionItem emotion={{ name: 'New emotion' }} isActive/>
                 )}
                 {
                     emotions.length > 0 && (
                         <>
                             {
                                 emotions.map(emotion => (
-                                    <EmotionItem key={emotion.id} emotion={emotion}/>
+                                    <EmotionItem
+                                        key={emotion.id}
+                                        emotion={emotion}
+                                        isActive={activeEmotionId === emotion.id}
+                                    />
                                 ))
                             }
                         </>
