@@ -6,15 +6,16 @@ import { useEmotionSetsStore } from '../../state/useEmotionSetsStore.ts';
 import { useEmotionsStore } from '../../state/useEmotionsStore.ts';
 import { EmotionItem } from './EmotionItem.tsx';
 import { useAddNewEmotion } from '../../use-cases/useAddNewEmotion.ts';
+import { useDeleteActiveEmotion } from '../../use-cases/useDeleteActiveEmotion.ts';
 
 export const EmotionsList: React.FC = () => {
     const { palette } = useTheme();
     const { activeEmotionSetId } = useEmotionSetsStore();
     const { isNewEmotionVisible, emotions, activeEmotionId } = useEmotionsStore();
 
-    const addNewEmotion = useAddNewEmotion();
-
     const initEmotions = useInitEmotions();
+    const addNewEmotion = useAddNewEmotion();
+    const deleteActiveEmotion = useDeleteActiveEmotion();
 
     useEffect(() => {
         if (activeEmotionSetId) {
@@ -48,6 +49,7 @@ export const EmotionsList: React.FC = () => {
                         />
                         <MdDeleteOutline
                             size={'20px'}
+                            onClick={deleteActiveEmotion}
                             cursor={'pointer'}
                         />
                     </Stack>

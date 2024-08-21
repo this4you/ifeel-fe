@@ -8,25 +8,31 @@ type EmotionsStore = {
     setEmotions: (emotions: Emotion[]) => void,
     addEmotion: (emotion: Emotion) => void,
     updateEmotion: (emotion: Emotion) => void,
-    deleteEmotion: (id: string) => void,
+    deleteEmotion: (id: string) => Emotion[],
     setIsNewEmotionVisible: (isVisible: boolean) => void,
     setActiveEmotionId: (id: string | null) => void,
 }
 
-export const useEmotionsStore = create<EmotionsStore>((set) => ({
+export const useEmotionsStore = create<EmotionsStore>((set, get) => ({
     emotions: [],
     activeEmotionId: null,
     isNewEmotionVisible: true,
     setEmotions: emotions => set(() => ({ emotions })),
     addEmotion: emotion => set(({ emotions }) => ({
-        emotions: [...emotions, emotion]
+        emotions: [emotion, ...emotions]
     })),
     updateEmotion: emotion => set(({ emotions }) => ({
         emotions: emotions.map(it => it.id == emotion.id ? emotion : it)
     })),
-    deleteEmotion: id => set(({ emotions }) => ({
-        emotions: emotions.filter(it => it.id !== id)
-    })),
+    deleteEmotion: id => {
+        const newEmotions = get().emotions.filter(it => it.id !== id)
+
+        set(() => ({
+            emotions: newEmotions
+        }))
+
+        return newEmotions;
+    },
     setIsNewEmotionVisible: isVisible => set(() => ({
         isNewEmotionVisible: isVisible
     })),
