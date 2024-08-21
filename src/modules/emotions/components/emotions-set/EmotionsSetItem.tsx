@@ -20,6 +20,7 @@ export const EmotionsSetItem: React.FC<Props> = ({
             key={id}
             sx={{
                 width: '100%',
+                minHeight: '70px',
                 height: '70px',
                 display: 'grid',
                 gridTemplateColumns: '80% 1fr',
