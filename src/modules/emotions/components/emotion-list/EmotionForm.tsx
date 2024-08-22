@@ -51,7 +51,7 @@ const EmotionFormContent: React.FC = () => {
                 spacing={2}
                 marginInline={2}
                 marginTop={1}
-                overflow={'scroll'}
+                overflow={'hidden'}
                 paddingTop={'6px'}
             >
                 <FormTextField

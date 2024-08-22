@@ -23,7 +23,7 @@ export const EmotionsSets: React.FC = () => {
     }, []);
 
     return (
-        <Box sx={{ width: '250px', height: '100%', display:'flex', flexDirection: 'column' }}>
+        <Box sx={{ width: '250px', height: '100%',  }}>
             <Box sx={{
                 display: 'flex',
                 justifyContent:'center',
@@ -83,13 +83,18 @@ export const EmotionsSets: React.FC = () => {
             }
             {
                 emotionSets.length > 0 && (
-                    <Stack display={'flex'} direction={'column'} overflow={'scroll'}>
+                    <Box sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        width: '100%',
+                        overflowY: 'hidden'
+                    }}>
                         {
                             emotionSets.map(emotionSet => (
                                 <EmotionsSetItem key={emotionSet.id} emotionSet={emotionSet}/>
                             ))
                         }
-                    </Stack>
+                    </Box>
                 )
             }
         </Box>

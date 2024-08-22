@@ -5,7 +5,7 @@ import { createEmotionsSetRest } from '../api/createEmotionsSetRest.ts';
 
 export const useCreateEmotionSet = () => {
     const { showLoader, hideLoader } = useAppLoadingStore();
-    const { addEmotionsSet, setIsMoodSelectorVisible } = useEmotionSetsStore();
+    const { addEmotionsSet, setIsMoodSelectorVisible, setActiveEmotionSetId } = useEmotionSetsStore();
     const log = useLogger();
 
     return async (moodScore: number) => {
@@ -15,6 +15,7 @@ export const useCreateEmotionSet = () => {
             const emotionsSet = await createEmotionsSetRest(moodScore);
 
             addEmotionsSet(emotionsSet);
+            setActiveEmotionSetId(emotionsSet.id);
             setIsMoodSelectorVisible(false);
         } catch (e) {
             log(e as Error, 'Error happens during create emotion set');
