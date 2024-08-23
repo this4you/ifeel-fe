@@ -1,7 +1,7 @@
 import { Box, Stack, Typography, useTheme } from '@mui/material';
 import { MdOutlineCreate } from 'react-icons/md';
 import { MdDeleteOutline } from 'react-icons/md';
-import { RiMenuSearchLine } from 'react-icons/ri';
+import { LuDownloadCloud } from "react-icons/lu";
 import { CiViewList } from 'react-icons/ci';
 import { useEmotionSetsStore } from '../../state/useEmotionSetsStore.ts';
 import { EmotionsSetItem } from './EmotionsSetItem.tsx';
@@ -9,6 +9,7 @@ import { useInitEmotionSets } from '../../use-cases/useInitEmotionSets.ts';
 import { useEffect } from 'react';
 import { useDeleteActiveEmotionSet } from '../../use-cases/useDeleteActiveEmotionSet.ts';
 import { useDisplayMoodSelector } from '../../use-cases/useDisplayMoodSelector.ts';
+import { useExportReport } from '../../use-cases/useExportReport.ts';
 
 export const EmotionsSets: React.FC = () => {
     const {  palette } = useTheme();
@@ -17,6 +18,7 @@ export const EmotionsSets: React.FC = () => {
     const displayMoodSelector = useDisplayMoodSelector();
     const deleteActiveEmotionSet = useDeleteActiveEmotionSet();
     const initEmotionSets = useInitEmotionSets();
+    const exportReport = useExportReport();
 
     useEffect(() => {
         initEmotionSets()
@@ -45,9 +47,10 @@ export const EmotionsSets: React.FC = () => {
                             cursor={'pointer'}
                             onClick={displayMoodSelector}
                         />
-                        <RiMenuSearchLine
+                        <LuDownloadCloud
                             size={'20px'}
                             cursor={'pointer'}
+                            onClick={exportReport}
                         />
                         {activeEmotionSetId &&
                             <MdDeleteOutline
