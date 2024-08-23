@@ -18,7 +18,7 @@ export const useEmotionSetsStore = create<EmotionsSetsStore>((set) => ({
     isMoodSelectorVisible: true,
     setEmotionsSets: emotionSets => set(() => ({ emotionSets })),
     addEmotionsSet: emotionSet => set(({ emotionSets }) => ({
-        emotionSets: [...emotionSets, emotionSet]
+        emotionSets: [emotionSet, ...emotionSets]
     })),
     deleteEmotionsSet: id => set(({ emotionSets }) => ({
         emotionSets: emotionSets.filter(it => it.id !== id)
