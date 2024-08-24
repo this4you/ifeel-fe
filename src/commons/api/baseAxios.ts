@@ -1,10 +1,8 @@
 import axios from 'axios';
-import { Tokens } from '../../modules/auth/models/Tokens.ts';
-
-const BASE_URL = 'http://localhost:8888';
+import { Tokens } from '@auth/models/Tokens.ts';
 
 export const baseAxios = axios.create({
-    baseURL: BASE_URL
+    baseURL: import.meta.env.VITE_API_BASE_URL
 });
 
 baseAxios.interceptors.request.use((config) => {
