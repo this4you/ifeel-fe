@@ -14,7 +14,7 @@ export const AppRouters: React.FC = () => (
     <BrowserRouter>
         <Routes>
             <Route
-                path="/ifeel-fe"
+                path={`${BASE_LOCATION}`}
                 element={
                     <OnlyNotAuthRoute>
                         <LandingPage/>
