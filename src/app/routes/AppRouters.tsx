@@ -3,7 +3,8 @@ import React from 'react';
 import {
     Routes,
     Route,
-    Navigate, BrowserRouter
+    Navigate,
+    HashRouter
 } from 'react-router-dom';
 import { LandingPage, UserHomePage } from '../pages';
 import { OnlyNotAuthRoute, PrivateRoute } from '@auth/components';
@@ -11,7 +12,7 @@ import { Emotions } from '../../modules/emotions/components';
 import { BASE_LOCATION } from '@commons/constants.ts';
 
 export const AppRouters: React.FC = () => (
-    <BrowserRouter>
+    <HashRouter>
         <Routes>
             <Route
                 path={`${BASE_LOCATION}`}
@@ -49,5 +50,5 @@ export const AppRouters: React.FC = () => (
                 element={<Navigate to={`/${BASE_LOCATION}`} replace/>}
             />
         </Routes>
-    </BrowserRouter>
+    </HashRouter>
 );
