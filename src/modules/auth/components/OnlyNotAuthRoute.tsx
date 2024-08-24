@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { useUserStore } from '../state/useUserStore.ts';
 import { useInitUserInfo } from '../use-cases/useInitUserInfo.ts';
 import { useAppLoadingStore } from '@commons/state/useAppLoadingStore.ts';
+import { BASE_LOCATION } from '@commons/constants.ts';
 
 export const OnlyNotAuthRoute: React.FC<PropsWithChildren> = ({ children }) => {
     const { isLoading } = useAppLoadingStore();
@@ -19,7 +20,7 @@ export const OnlyNotAuthRoute: React.FC<PropsWithChildren> = ({ children }) => {
     }
 
     if (user) {
-        return <Navigate to={'/user'}/>
+        return <Navigate to={`${BASE_LOCATION}/user`}/>
     }
 
     return (

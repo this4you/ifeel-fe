@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useUserStore } from '../state/useUserStore.ts';
+import { BASE_LOCATION } from '@commons/constants.ts';
 
 export const useInitUserInfo = () => {
     const navigate = useNavigate();
@@ -9,6 +10,6 @@ export const useInitUserInfo = () => {
         localStorage.clear();
         setUser(null);
 
-        navigate('/');
+        navigate(`${BASE_LOCATION}`);
     }
 }

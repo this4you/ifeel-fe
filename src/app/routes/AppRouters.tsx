@@ -6,14 +6,15 @@ import {
     Navigate, BrowserRouter
 } from 'react-router-dom';
 import { LandingPage, UserHomePage } from '../pages';
-import { OnlyNotAuthRoute, PrivateRoute } from '../../modules/auth/components';
+import { OnlyNotAuthRoute, PrivateRoute } from '@auth/components';
 import { Emotions } from '../../modules/emotions/components';
+import { BASE_LOCATION } from '@commons/constants.ts';
 
 export const AppRouters: React.FC = () => (
     <BrowserRouter>
         <Routes>
             <Route
-                path="/"
+                path="/ifeel-fe"
                 element={
                     <OnlyNotAuthRoute>
                         <LandingPage/>
@@ -21,7 +22,7 @@ export const AppRouters: React.FC = () => (
                 }>
             </Route>
             <Route
-                path="/user"
+                path={`${BASE_LOCATION}/user`}
                 element={
                     <PrivateRoute>
                         <UserHomePage/>
@@ -30,22 +31,22 @@ export const AppRouters: React.FC = () => (
             >
                 <Route
                     index
-                    element={<Navigate to="/user/emotions" replace />}
+                    element={<Navigate to={`${BASE_LOCATION}/user/emotions`} replace />}
                 />
                 <Route
-                    path="/user/emotions"
+                    path={`${BASE_LOCATION}/user/emotions`}
                     element={
                         <Emotions/>
                     }
                 />
                 <Route
-                    path="/user/*"
-                    element={<Navigate to="/user/emotions" replace/>}
+                    path={`${BASE_LOCATION}/user/*`}
+                    element={<Navigate to={`${BASE_LOCATION}/user/emotions`} replace/>}
                 />
             </Route>
             <Route
                 path="*"
-                element={<Navigate to="/" replace/>}
+                element={<Navigate to={`/${BASE_LOCATION}`} replace/>}
             />
         </Routes>
     </BrowserRouter>
