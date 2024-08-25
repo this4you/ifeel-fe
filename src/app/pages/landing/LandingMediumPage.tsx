@@ -1,10 +1,10 @@
 import { PageContainer } from '@commons/containers/PageContainer.tsx';
 import { LeftSidebar, MainContent } from '@commons/containers';
-import { LogoDark, LogoLight } from '@commons/components';
+import { LogoLight } from '@commons/components';
 import { GoogleLogin } from '@auth/components';
 import { Box, Typography, useTheme } from '@mui/material';
 
-export const LandingPage = () => {
+export const LandingMediumPage = () => {
     const theme = useTheme();
     return (
         <PageContainer>
@@ -21,14 +21,6 @@ export const LandingPage = () => {
                 </Box>
             </LeftSidebar>
             <MainContent>
-                <LogoDark
-                    width={400}
-                    height={400}
-                    style={{
-                        filter: 'invert(36%) sepia(87%) saturate(446%) hue-rotate(174deg) brightness(93%) contrast(99%)'
-                        // filter: 'invert(53%) sepia(23%) saturate(379%) hue-rotate(112deg) brightness(89%) contrast(92%)'
-                    }}
-                />
                 <Box sx={{
                     width: '450px',
                     minHeight: '450px',

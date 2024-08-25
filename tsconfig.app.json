@@ -26,6 +26,7 @@
       "@app/*": ["./src/app/*"],
       "@commons/*": ["./src/commons/*"],
       "@auth/*": ["./src/modules/auth/*"],
+      "@emotions/*": ["./src/modules/emotions/*"],
     }
   },
   "include": ["src"]

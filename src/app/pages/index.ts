@@ -1,2 +1,2 @@
 export { UserHomePage } from './UserHomePage.tsx';
-export { LandingPage } from './LandingPage.tsx';
+export { LandingPage } from './landing/LandingPage.tsx';

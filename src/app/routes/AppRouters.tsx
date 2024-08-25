@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom';
 import { LandingPage, UserHomePage } from '../pages';
 import { OnlyNotAuthRoute, PrivateRoute } from '@auth/components';
-import { Emotions } from '../../modules/emotions/components';
+import { Emotions } from '@emotions/components';
 import { BASE_LOCATION } from '@commons/constants.ts';
 
 export const AppRouters: React.FC = () => (
