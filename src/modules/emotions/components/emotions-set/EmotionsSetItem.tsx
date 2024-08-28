@@ -37,7 +37,7 @@ export const EmotionsSetItem: React.FC<Props> = ({
             onClick={() => setActiveEmotionSet(id)}
         >
             <Typography variant={'subtitle2'}>
-                {moment(date).calendar()}
+                {moment(date).format('dddd DD/MM/YY')}
             </Typography>
             <Typography variant={'subtitle2'}>
                 {getMoodScoreItem(moodScore).icon} ({moodScore})
