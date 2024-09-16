@@ -25,7 +25,13 @@ export const EmotionsSets: React.FC = () => {
     }, []);
 
     return (
-        <Box sx={{ width: '250px', height: '100%',  }}>
+        <Box sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            width: '250px',
+            height: '100%',
+        }}
+        >
             <Box sx={{
                 display: 'flex',
                 justifyContent:'center',
@@ -90,7 +96,7 @@ export const EmotionsSets: React.FC = () => {
                         display: 'flex',
                         flexDirection: 'column',
                         width: '100%',
-                        overflowY: 'hidden'
+                        overflowY: 'auto'
                     }}>
                         {
                             emotionSets.map(emotionSet => (
