@@ -30,7 +30,13 @@ export const EmotionItem: React.FC<{ emotion: Partial<Emotion>, isActive: boolea
                 backgroundColor: isActive ? alpha(palette.primary.main, 0.3) : 'none',
                 borderRadius: '10px',
             }}>
-            <Typography variant={'subtitle2'}>
+            <Typography
+                variant={'subtitle2'}
+                sx={{
+                    overflow: 'auto',
+                    textOverflow: 'ellipsis'
+                }}
+            >
                 {emotion.name}
             </Typography>
         </Box>
