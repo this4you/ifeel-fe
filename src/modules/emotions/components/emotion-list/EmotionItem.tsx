@@ -33,7 +33,7 @@ export const EmotionItem: React.FC<{ emotion: Partial<Emotion>, isActive: boolea
             <Typography
                 variant={'subtitle2'}
                 sx={{
-                    overflow: 'auto',
+                    overflow: 'hidden',
                     textOverflow: 'ellipsis'
                 }}
             >
