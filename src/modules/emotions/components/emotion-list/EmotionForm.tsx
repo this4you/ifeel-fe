@@ -1,4 +1,4 @@
-import { Box, Button, Stack } from '@mui/material';
+import { Box, Button, Paper, Stack } from '@mui/material';
 import { LogoDark } from '@commons/components';
 import React, { useCallback } from 'react';
 import { FormWrapper } from '@commons/components/form/FormWrapper.tsx';
@@ -7,6 +7,7 @@ import { FormTextField } from '@commons/components/form/FormTextField.tsx';
 import { useFormContext } from 'react-hook-form';
 import { useSaveEmotion } from '../../use-cases/useSaveEmotion.ts';
 import { useGetEmotionFormDefaultValue } from '../../use-cases/useGetEmotionFormDefaultValue.ts';
+import { AiEmotionAnalyzerButton } from '@emotions/components/emotion-list/AiEmotionAnalyzerButton.tsx';
 
 export const EmotionForm: React.FC = () => {
     const getEmotionsFormDefaultValue = useGetEmotionFormDefaultValue();
@@ -40,11 +41,13 @@ const EmotionFormContent: React.FC = () => {
         >
             <Box sx={{
                 display: 'flex',
-                justifyContent: 'center',
+                justifyContent: 'space-between',
                 alignItems: 'center',
                 height: '70px'
             }}>
+                <Box/>
                 <LogoDark width={'100px'}/>
+                <AiEmotionAnalyzerButton/>
             </Box>
             <Stack
                 display={'flex'}
@@ -53,6 +56,9 @@ const EmotionFormContent: React.FC = () => {
                 marginTop={1}
                 overflow={'hidden'}
                 paddingTop={'6px'}
+                sx={{
+                    overflow: 'auto'
+                }}
             >
                 <FormTextField
                     required
