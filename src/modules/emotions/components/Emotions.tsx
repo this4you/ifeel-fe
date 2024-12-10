@@ -1,9 +1,10 @@
-import { Box, useTheme } from '@mui/material';
+import { Box, Drawer, useTheme } from '@mui/material';
 import { EmotionsSets } from './emotions-set/EmotionsSets.tsx';
 import { EmotionsList } from './emotion-list/EmotionList.tsx';
 import { useEmotionSetsStore } from '../state/useEmotionSetsStore.ts';
 import { MoodSelector } from './mood-selector/MoodSelector.tsx';
 import { EmotionForm } from './emotion-list/EmotionForm.tsx';
+import { EmotionAnalyzerDrawer } from '@emotions/components/emotion-analyzer-drawer/EmotionAnalyzerDrawer.tsx';
 
 export const Emotions: React.FC = () => {
     const { palette } = useTheme();
@@ -35,6 +36,7 @@ export const Emotions: React.FC = () => {
                             </Box>
                         )
                 }
+                <EmotionAnalyzerDrawer/>
             </Box>
         </Box>
     );

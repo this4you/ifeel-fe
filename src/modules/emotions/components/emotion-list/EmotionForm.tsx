@@ -47,7 +47,8 @@ const EmotionFormContent: React.FC = () => {
             }}>
                 <Box/>
                 <LogoDark width={'100px'}/>
-                <AiEmotionAnalyzerButton/>
+                <Box/>
+                {/*<AiEmotionAnalyzerButton/>*/}
             </Box>
             <Stack
                 display={'flex'}

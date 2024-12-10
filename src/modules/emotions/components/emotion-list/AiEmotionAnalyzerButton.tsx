@@ -3,17 +3,22 @@ import { Box, Tooltip, useTheme } from '@mui/material';
 import React from 'react';
 import { AlertDialog } from '@commons/components/AlertDialog.tsx';
 
-export const AiEmotionAnalyzerButton = () => {
+type Props = {
+    onClick?: Function
+}
+
+export const AiEmotionAnalyzerButton: React.FC<Props> = ({
+    onClick
+}) => {
     const { palette, spacing } = useTheme();
 
     return (
-        <AlertDialog
-            title={'Warning'}
-            description={'Using artificial intelligence to recognize emotions can be misleading. We recommend trying to analyze your own feelings before turning to the system.'}
-        >
-            <Box sx={[
+            <Box
+                onClick={() => onClick && onClick()}
+                sx={[
                 {
-                    marginRight: spacing(2),
+                    width: '30px',
+                    heigth: '30px',
                     color: palette.primary.light,
                     cursor: 'pointer'
                 },
@@ -24,13 +29,12 @@ export const AiEmotionAnalyzerButton = () => {
                 },
             ]}>
                 <Tooltip title="Analyze emotion by AI" placement={'left'}>
-                    <div>
+                    <Box>
                         <FaLightbulb
                             size={'30px'}
                         />
-                    </div>
+                    </Box>
                 </Tooltip>
             </Box>
-        </AlertDialog>
     );
 }

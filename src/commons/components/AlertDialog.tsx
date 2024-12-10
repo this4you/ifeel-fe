@@ -5,7 +5,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useCallback } from 'react';
 
 type Props = {
     title: string;
@@ -23,15 +23,19 @@ export const AlertDialog: React.FC<Props> = ({
 }) => {
     const [open, setOpen] = React.useState(false);
 
-    const handleClickOpen = () => {
+    const handleClickOpen = useCallback(() => {
         setOpen(true);
-        agreeCallback && agreeCallback()
-    };
+    }, [setOpen]);
 
-    const handleClose = () => {
+    const handleClose = useCallback(() => {
         setOpen(false);
         disagreeCallback && disagreeCallback()
-    };
+    }, [setOpen, disagreeCallback]);
+
+    const handleConfirm = useCallback(() => {
+        setOpen(false);
+        agreeCallback && agreeCallback();
+    }, [])
 
     return (
         <>
@@ -52,7 +56,7 @@ export const AlertDialog: React.FC<Props> = ({
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={handleClose}>Cancel</Button>
-                        <Button onClick={handleClose} autoFocus>Confirm</Button>
+                        <Button onClick={handleConfirm}>Confirm</Button>
                     </DialogActions>
                 </Dialog>
             </>

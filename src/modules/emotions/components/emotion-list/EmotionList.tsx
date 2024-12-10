@@ -26,6 +26,7 @@ export const EmotionsList: React.FC = () => {
     return (
         <Box sx={{
             width: '180px',
+            minWidth: '180px',
             height: '100%',
             borderRight: `1px solid ${palette.divider}`
         }}>
