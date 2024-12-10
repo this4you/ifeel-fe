@@ -3,6 +3,7 @@ import { Box } from '@mui/material';
 
 export const MainContent: FC<PropsWithChildren> = ({ children }) => (
     <Box sx={theme => ({
+        overflow: 'hidden',
         width: '100%',
         height: '100%',
         display: 'flex',

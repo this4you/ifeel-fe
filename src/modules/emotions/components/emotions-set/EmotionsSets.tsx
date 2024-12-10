@@ -37,6 +37,7 @@ export const EmotionsSets: React.FC = () => {
                 justifyContent:'center',
                 width: '100%',
                 height: '75px',
+                minHeight: '75px',
             }}>
                 <Stack
                     width={'80%'}
