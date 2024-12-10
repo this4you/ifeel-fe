@@ -13,7 +13,7 @@ export const GoogleLogin: React.FC = () => {
             onClick={googleLogin}
             sx={[
                 {
-                    width: '240px',
+                    width: '80%',
                     height: '50px',
                     borderRadius: theme.shape.borderRadius * 1.4,
                     display: 'flex',

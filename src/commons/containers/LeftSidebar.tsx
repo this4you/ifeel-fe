@@ -12,7 +12,7 @@ export const LeftSidebar: FC<PropsWithChildren & { sx?: SxProps<Theme> }> = ({ c
                 display: 'flex',
                 justifyContent: 'space-between',
                 backgroundColor: theme.palette.primary.main,
-                width: '350px'
+                width: '250px'
             }}
         >
             <Box
