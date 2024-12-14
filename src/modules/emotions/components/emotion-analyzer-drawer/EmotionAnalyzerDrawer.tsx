@@ -6,10 +6,13 @@ import { PiMaskHappy } from 'react-icons/pi';
 import { EmotionAnalyzerItem } from '@emotions/components/emotion-analyzer-drawer/EmotionAnalyzerItem.tsx';
 import { FaTheaterMasks } from 'react-icons/fa';
 import { BsCalendar2Date, BsCalendar2Month } from 'react-icons/bs';
+import { useEmotionsStore } from '@emotions/state/useEmotionsStore.ts';
+import { useEmotionSetsStore } from '@emotions/state/useEmotionSetsStore.ts';
 
 export const EmotionAnalyzerDrawer: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const {palette} = useTheme();
+    const { activeEmotionId } = useEmotionsStore();
+    const { activeEmotionSetId } = useEmotionSetsStore();
 
     return (
         <>
@@ -63,14 +66,18 @@ export const EmotionAnalyzerDrawer: React.FC = () => {
                     >
                         <EmotionAnalyzerItem
                             name="Analyze current emotion"
-                            description="Selected emotion will be analyzed."
+                            description="Analyze one selected emotion."
+                            disabled={activeEmotionId === null}
+                            disabledInfo={'You must open existing emotion to execute it.'}
                             icon={
                                 <PiMaskHappy size={'30px'}/>
                             }
                         />
                         <EmotionAnalyzerItem
                             name="Analyze current emotions set"
-                            description="Selected emotions set will be analyzed."
+                            description="Analyze the list of emotions from selected set."
+                            disabled={activeEmotionSetId === null}
+                            disabledInfo={'You must open emotions set to execute it.'}
                             icon={
                                 <FaTheaterMasks size={'30px'}/>
                             }
