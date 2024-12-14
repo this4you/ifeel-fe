@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { Box, Divider, Drawer, IconButton, Stack, Typography } from '@mui/material';
+import { Box, Divider, Drawer, IconButton, Stack, Typography, useTheme } from '@mui/material';
 import { AiEmotionAnalyzerButton } from '@emotions/components/emotion-list/AiEmotionAnalyzerButton.tsx';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { PiMaskHappy } from "react-icons/pi";
+import { PiMaskHappy } from 'react-icons/pi';
 import { EmotionAnalyzerItem } from '@emotions/components/emotion-analyzer-drawer/EmotionAnalyzerItem.tsx';
-import { FaTheaterMasks } from "react-icons/fa";
-import { BsCalendar2Month } from "react-icons/bs";
-import { BsCalendar2Date } from "react-icons/bs";
+import { FaTheaterMasks } from 'react-icons/fa';
+import { BsCalendar2Date, BsCalendar2Month } from 'react-icons/bs';
 
 export const EmotionAnalyzerDrawer: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const {palette} = useTheme();
 
     return (
         <>

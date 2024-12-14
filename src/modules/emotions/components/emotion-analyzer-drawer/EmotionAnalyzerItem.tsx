@@ -12,15 +12,18 @@ export const EmotionAnalyzerItem: React.FC<Props> = ({
     icon,
     description
 }) => {
-    const { palette} = useTheme();
 
     return (
-        <Stack direction={'row'} sx={{
+        <Stack direction={'row'} sx={[{
             padding: '20px',
             display:'flex',
             alignItems:'center',
             cursor: 'pointer',
-        }}>
+        }, {
+            '&:hover': {
+                backgroundColor: 'background.default',
+            },
+        }]}>
             {icon}
             <Stack direction={'column'}>
                 <Typography variant={'subtitle2'} marginLeft={'20px'}>
@@ -29,7 +32,7 @@ export const EmotionAnalyzerItem: React.FC<Props> = ({
                 <Typography
                     variant={'caption'}
                     marginLeft={'20px'}
-                    color={palette.text.disabled}
+                    color='text.disabled'
                 >
                     {description}
                 </Typography>
