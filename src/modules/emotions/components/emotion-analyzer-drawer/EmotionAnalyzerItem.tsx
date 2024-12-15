@@ -20,14 +20,14 @@ export const EmotionAnalyzerItem: React.FC<Props> = ({
     isLoading,
     onClick
 }) => {
-    const onClickHandler = useCallback(() => {
-        if (!disabled && onClick) {
-            onClick();
-        }
-    }, [disabled, onClick]);
-
     const isDisabled = disabled || isLoading;
     const disabledText = isDisabled ? disabledInfo : '';
+
+    const onClickHandler = useCallback(() => {
+        if (!isDisabled && onClick) {
+            onClick();
+        }
+    }, [isDisabled, onClick]);
 
     return (
         <Tooltip title={isDisabled ? disabledText : ''}>

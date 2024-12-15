@@ -113,7 +113,7 @@ export const CurrentEmotionAnalyzeResultCard: React.FC<Props> = ({
                 direction="row"
                 justifyContent={'space-between'}
                 alignItems={'center'}
-                marginBottom={'20px'}
+                paddingBottom={'20px'}
             >
                 <Stack direction="row">
                     <IconButton
