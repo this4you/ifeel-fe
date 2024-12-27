@@ -1,9 +1,7 @@
-import { Box, Button, IconButton, Stack, Typography } from '@mui/material';
-import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
-import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt';
+import { Box, Divider, Typography } from '@mui/material';
 import React from 'react';
-import { useCloseEmotionResult } from '@emotions/use-cases/useCloseEmotionResult.ts';
 import { CurrentEmotionSetAnalyzeResult } from '@emotions/models/CurrentEmotionSetAnalyzeResult.ts';
+import { EmotionAnalyzeResultCardFooter } from '@emotions/components/emotion-analyzer-drawer/EmotionAnalyzeResultCardFooter.tsx';
 
 type Props = {
     result: CurrentEmotionSetAnalyzeResult
@@ -14,8 +12,6 @@ export const CurrentEmotionSetAnalyzeResultCard: React.FC<Props> = ({
         recommendation
     }
 }) => {
-    const closeEmotionResult = useCloseEmotionResult();
-
     return (
         <Box sx={{
             display: 'flex',
@@ -31,41 +27,9 @@ export const CurrentEmotionSetAnalyzeResultCard: React.FC<Props> = ({
                 {recommendation}
             </Typography>
 
-            <Stack
-                direction="row"
-                justifyContent={'space-between'}
-                alignItems={'center'}
-                paddingBottom={'20px'}
-            >
-                <Stack direction="row">
-                    <IconButton
-                        sx={{
-                            width: '40px',
-                            height: '40px'
-                        }}
-                    >
-                        <ThumbUpOffAltIcon/>
-                    </IconButton>
-                    <IconButton
-                        sx={{
-                            width: '40px',
-                            height: '40px'
-                        }}
-                    >
-                        <ThumbDownOffAltIcon/>
-                    </IconButton>
-                </Stack>
-                <Button
-                    color={'inherit'}
-                    variant={'contained'}
-                    sx={{
-                        width: '100px'
-                    }}
-                    onClick={closeEmotionResult}
-                >
-                    Close
-                </Button>
-            </Stack>
+            <Divider sx={{ marginTop: '20px', marginBottom: '20px' }}/>
+
+            <EmotionAnalyzeResultCardFooter/>
         </Box>
     );
 };
