@@ -12,6 +12,7 @@ type AiEmotionAnalyzerStore = {
 export const useAiEmotionAnalyzerStore = create<AiEmotionAnalyzerStore>((set, get) => ({
     isLoading: {
         [EmotionAnalyzeType.CURRENT_EMOTION_ANALYZE]: false,
+        [EmotionAnalyzeType.CURRENT_EMOTION_SET_ANALYZE]: false,
     },
     setIsLoading: (type, isLoading) => set((store) => ({
         isLoading: {

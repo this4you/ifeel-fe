@@ -11,6 +11,7 @@ import { useEmotionSetsStore } from '@emotions/state/useEmotionSetsStore.ts';
 import { useAiEmotionAnalyzerStore } from '@emotions/state/useAiEmotionAnalyzerStore.ts';
 import { EmotionAnalyzeResultCard } from '@emotions/components/emotion-analyzer-drawer/EmotionAnalyzeResultCard.tsx';
 import { useAnalyzeCurrentEmotion } from '@emotions/use-cases/useAnalyzeCurrentEmotion.ts';
+import { useAnalyzeCurrentEmotionSet } from '@emotions/use-cases/useAnalyzeCurrentEmotionSet.ts';
 
 export const EmotionAnalyzerDrawer: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -19,6 +20,7 @@ export const EmotionAnalyzerDrawer: React.FC = () => {
     const { emotionAnalyzeResult, isLoading } = useAiEmotionAnalyzerStore();
 
     const analyzeCurrentEmotion = useAnalyzeCurrentEmotion();
+    const analyzeCurrentEmotionSet = useAnalyzeCurrentEmotionSet();
 
     return (
         <>
@@ -78,7 +80,7 @@ export const EmotionAnalyzerDrawer: React.FC = () => {
                                         name="Analyze current emotion"
                                         description="Analyze one selected emotion."
                                         onClick={analyzeCurrentEmotion}
-                                        isLoading={ isLoading['CURRENT_EMOTION_ANALYZE']}
+                                        isLoading={isLoading['CURRENT_EMOTION_ANALYZE']}
                                         disabled={activeEmotionId === null}
                                         disabledInfo={'You must open existing emotion to execute it.'}
                                         icon={
@@ -88,9 +90,10 @@ export const EmotionAnalyzerDrawer: React.FC = () => {
                                     <EmotionAnalyzerItem
                                         name="Analyze current emotions set"
                                         description="Analyze the list of emotions from selected set."
-                                        // disabled={activeEmotionSetId === null}
-                                        // disabledInfo={'You must open emotions set to execute it.'}
-                                        disabled={true}
+                                        onClick={analyzeCurrentEmotionSet}
+                                        isLoading={isLoading['CURRENT_EMOTION_SET_ANALYZE']}
+                                        disabled={activeEmotionSetId === null}
+                                        disabledInfo={'You must open emotions set to execute it.'}
                                         icon={
                                             <FaTheaterMasks size={'30px'}/>
                                         }
