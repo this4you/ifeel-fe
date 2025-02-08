@@ -27,6 +27,7 @@
       "@commons/*": ["./src/commons/*"],
       "@auth/*": ["./src/modules/auth/*"],
       "@emotions/*": ["./src/modules/emotions/*"],
+      "@analysis/*": ["./src/modules/analysis/*"],
     }
   },
   "include": ["src"]

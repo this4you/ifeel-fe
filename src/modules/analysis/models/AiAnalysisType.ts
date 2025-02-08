@@ -1,0 +1,4 @@
+export enum AiAnalysisType {
+    EMOTION_ANALYZE = 'EMOTION_ANALYZE',
+    EMOTION_SET_ANALYZE = 'EMOTION_SET_ANALYZE'
+};

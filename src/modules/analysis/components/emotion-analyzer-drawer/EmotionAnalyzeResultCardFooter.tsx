@@ -2,7 +2,7 @@ import { Button, IconButton, Stack } from '@mui/material';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt';
 import React from 'react';
-import { useCloseEmotionResult } from '@emotions/use-cases/useCloseEmotionResult.ts';
+import { useCloseEmotionResult } from '../../use-cases/useCloseEmotionResult.ts';
 
 export const EmotionAnalyzeResultCardFooter: React.FC = () => {
     const closeEmotionResult = useCloseEmotionResult();

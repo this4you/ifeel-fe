@@ -1,6 +1,6 @@
 import { baseAxios } from '@commons/api/baseAxios.ts';
-import { CurrentEmotionAnalyzeResult } from '@emotions/models/CurrentEmotionAnalyzeResult.ts';
-import { EmotionAnalyzeType } from '@emotions/models/EmotionAnalyzeType.ts';
+import { EmotionAnalyzeResult } from '../models/EmotionAnalyzeResult.ts';
+import { AiAnalysisType } from '../models/AiAnalysisType.ts';
 
 type CurrentEmotionAnalyzeResponse = {
     emotionId: string;
@@ -10,13 +10,13 @@ type CurrentEmotionAnalyzeResponse = {
     usefulConversation: string | null;
 };
 
-export const analyzeEmotionRest = async (emotionSetId: string, emotionId: string): Promise<CurrentEmotionAnalyzeResult> => {
+export const analyzeEmotionRest = async (emotionSetId: string, emotionId: string): Promise<EmotionAnalyzeResult> => {
     const result = await baseAxios.post<CurrentEmotionAnalyzeResponse>(
         `/emotion-sets/${emotionSetId}/emotions/${emotionId}/analyze`
     );
 
     return {
         ...result.data,
-        type: EmotionAnalyzeType.CURRENT_EMOTION_ANALYZE,
+        type: AiAnalysisType.CURRENT_EMOTION_ANALYZE,
     };
 };

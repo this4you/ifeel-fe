@@ -1,11 +1,11 @@
 import { Box, Divider, Typography } from '@mui/material';
 import React from 'react';
-import { CurrentEmotionAnalyzeResult } from '@emotions/models/CurrentEmotionAnalyzeResult.ts';
+import { EmotionAnalyzeResult } from '../../models/EmotionAnalyzeResult.ts';
 import { useEmotionsStore } from '@emotions/state/useEmotionsStore.ts';
-import { EmotionAnalyzeResultCardFooter } from '@emotions/components/emotion-analyzer-drawer/EmotionAnalyzeResultCardFooter.tsx';
+import { EmotionAnalyzeResultCardFooter } from './EmotionAnalyzeResultCardFooter.tsx';
 
 type Props = {
-    result: CurrentEmotionAnalyzeResult
+    result: EmotionAnalyzeResult
 }
 
 export const CurrentEmotionAnalyzeResultCard: React.FC<Props> = ({
