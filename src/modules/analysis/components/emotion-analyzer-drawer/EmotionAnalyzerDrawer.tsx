@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Box, Divider, Drawer, IconButton, Stack, Typography, useTheme } from '@mui/material';
 import { AiEmotionAnalyzerButton } from '@emotions/components/emotion-list/AiEmotionAnalyzerButton.tsx';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -12,15 +12,26 @@ import { useAiEmotionAnalyzerStore } from '../../state/useAiEmotionAnalyzerStore
 import { EmotionAnalyzeResultCard } from './EmotionAnalyzeResultCard.tsx';
 import { useAnalyzeCurrentEmotion } from '../../use-cases/useAnalyzeCurrentEmotion.ts';
 import { useAnalyzeCurrentEmotionSet } from '../../use-cases/useAnalyzeCurrentEmotionSet.ts';
+import { EmotionPeriodPickerModal } from "@analysis/components/emotio-period-picker-modal/EmotionPeriodPickerModal.tsx";
 
 export const EmotionAnalyzerDrawer: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isEmotionPeriodModalOpen, setIsEmotionPeriodModalOpen] = useState(false)
     const { activeEmotionId } = useEmotionsStore();
     const { activeEmotionSetId } = useEmotionSetsStore();
     const { emotionAnalyzeResult, isLoading } = useAiEmotionAnalyzerStore();
 
     const analyzeCurrentEmotion = useAnalyzeCurrentEmotion();
     const analyzeCurrentEmotionSet = useAnalyzeCurrentEmotionSet();
+
+    const openAnalyzeEmotionPeriodModal = useCallback(() => {
+        setIsEmotionPeriodModalOpen(true)
+    }, [setIsEmotionPeriodModalOpen])
+
+    const closeAnalyzeEmotionPeriodModal = useCallback(() => {
+        setIsEmotionPeriodModalOpen(false)
+    }, [setIsEmotionPeriodModalOpen])
+
 
     return (
         <>
@@ -69,6 +80,10 @@ export const EmotionAnalyzerDrawer: React.FC = () => {
                             AI Emotion analyzer
                         </Typography>
                     </Stack>
+                    <EmotionPeriodPickerModal
+                        isOpen={isEmotionPeriodModalOpen}
+                        onCloseHandler={closeAnalyzeEmotionPeriodModal}
+                    />
                     <Divider/>
                     {
                         emotionAnalyzeResult === null
@@ -100,15 +115,9 @@ export const EmotionAnalyzerDrawer: React.FC = () => {
                                     />
                                     <Divider/>
                                     <EmotionAnalyzerItem
-                                        disabled={true}
-                                        name="Analyze emotion for today"
-                                        icon={
-                                            <BsCalendar2Date size={'30px'}/>
-                                        }
-                                    />
-                                    <EmotionAnalyzerItem
-                                        disabled={true}
-                                        name="Analyze emotion for month"
+                                        isLoading={isLoading['EMOTION_PERIOD_ANALYZE']}
+                                        name="Analyze emotion for period"
+                                        onClick={openAnalyzeEmotionPeriodModal}
                                         icon={
                                             <BsCalendar2Month size={'30px'}/>
                                         }

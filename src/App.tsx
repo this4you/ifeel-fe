@@ -4,6 +4,8 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 import { AppRouters } from './app/routes/AppRouters.tsx';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { AppLoader } from '@commons/components/AppLoader.tsx';
+import 'react-date-range/dist/styles.css';
+import 'react-date-range/dist/theme/default.css';
 
 
 function App() {

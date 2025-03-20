@@ -1,4 +1,4 @@
-import { Box, Button, Paper, Stack } from '@mui/material';
+import { Box, Button, Stack } from '@mui/material';
 import { LogoDark } from '@commons/components';
 import React, { useCallback } from 'react';
 import { FormWrapper } from '@commons/components/form/FormWrapper.tsx';
@@ -7,7 +7,6 @@ import { FormTextField } from '@commons/components/form/FormTextField.tsx';
 import { useFormContext } from 'react-hook-form';
 import { useSaveEmotion } from '../../use-cases/useSaveEmotion.ts';
 import { useGetEmotionFormDefaultValue } from '../../use-cases/useGetEmotionFormDefaultValue.ts';
-import { AiEmotionAnalyzerButton } from '@emotions/components/emotion-list/AiEmotionAnalyzerButton.tsx';
 
 export const EmotionForm: React.FC = () => {
     const getEmotionsFormDefaultValue = useGetEmotionFormDefaultValue();
