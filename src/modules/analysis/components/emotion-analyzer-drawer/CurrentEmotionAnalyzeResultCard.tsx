@@ -32,6 +32,9 @@ export const CurrentEmotionAnalyzeResultCard: React.FC<Props> = ({
             height: '100%',
             padding: '20px',
         }}>
+            <Typography variant="h6" marginTop={'10px'} marginBottom={'10px'} fontWeight={'bold'}>
+                Analyze current emotion result
+            </Typography>
             <Typography variant="subtitle1" marginTop={'10px'} fontWeight={'bold'}>
                 Emotion
             </Typography>

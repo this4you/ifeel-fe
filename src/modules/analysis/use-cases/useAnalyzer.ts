@@ -16,7 +16,7 @@ export const useAnalyzer = () => {
 
             setEmotionAnalyzeResult(analyzeResult);
         } catch (e) {
-            log(e as Error, 'Error happens during analyze current emotion set');
+            log(e as Error, 'Error happens during analyze process');
         } finally {
             setIsLoading(analyzeType, false);
         }

@@ -30,7 +30,7 @@ export const EmotionAnalyzerItem: React.FC<Props> = ({
     }, [isDisabled, onClick]);
 
     return (
-        <Tooltip title={isDisabled ? disabledText : ''}>
+        <Tooltip title={(isDisabled && !isLoading) ? disabledText : ''}>
             <Stack onClick={onClickHandler} direction={'row'} sx={[{
                 position: 'relative',
                 padding: '20px',

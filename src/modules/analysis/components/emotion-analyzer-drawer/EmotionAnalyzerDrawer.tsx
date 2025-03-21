@@ -117,6 +117,7 @@ export const EmotionAnalyzerDrawer: React.FC = () => {
                                     <EmotionAnalyzerItem
                                         isLoading={isLoading['EMOTION_PERIOD_ANALYZE']}
                                         name="Analyze emotion for period"
+                                        description="Provide an emotion analise for selected period"
                                         onClick={openAnalyzeEmotionPeriodModal}
                                         icon={
                                             <BsCalendar2Month size={'30px'}/>

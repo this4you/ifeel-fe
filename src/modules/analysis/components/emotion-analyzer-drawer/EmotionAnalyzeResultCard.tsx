@@ -5,6 +5,10 @@ import { CurrentEmotionAnalyzeResultCard } from './CurrentEmotionAnalyzeResultCa
 import { EmotionSetAnalyzeResult } from '../../models/EmotionSetAnalyzeResult.ts';
 import { CurrentEmotionSetAnalyzeResultCard } from './CurrentEmotionSetAnalyzeResultCard.tsx';
 import { AnalyzeResult } from "@analysis/models/AnalyzeResult.ts";
+import { EmotionPeriodAnalyzeResult } from "@analysis/models/EmotionPeriodAnalyzeResult.ts";
+import {
+    EmotionPeriodAnalyzeResultCard
+} from "@analysis/components/emotion-analyzer-drawer/EmotionPeriodAnalyzeResultCard.tsx";
 
 type Props = {
     emotionAnalyzeResult: AnalyzeResult;
@@ -18,6 +22,10 @@ const isCurrentEmotionSetAnalyzeResult = (type: AiAnalysisType, result: Object):
     return type === AiAnalysisType.EMOTION_SET_ANALYZE
 }
 
+const isEmotionPeriodAnalyseResult = (type: AiAnalysisType, result: Object): result is EmotionPeriodAnalyzeResult => {
+    return type === AiAnalysisType.EMOTION_PERIOD_ANALYZE
+}
+
 export const EmotionAnalyzeResultCard: React.FC<Props> = ({
     emotionAnalyzeResult
 }) => {
@@ -29,7 +37,9 @@ export const EmotionAnalyzeResultCard: React.FC<Props> = ({
         return <CurrentEmotionSetAnalyzeResultCard result={emotionAnalyzeResult.result}/>
     }
 
+    if (isEmotionPeriodAnalyseResult(emotionAnalyzeResult.type, emotionAnalyzeResult.result)) {
+        return <EmotionPeriodAnalyzeResultCard result={emotionAnalyzeResult.result}/>
+    }
+
     return null;
 };
-
-
