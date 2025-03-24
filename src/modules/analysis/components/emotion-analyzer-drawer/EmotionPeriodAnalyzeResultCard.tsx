@@ -10,43 +10,8 @@ type Props = {
 }
 
 export const EmotionPeriodAnalyzeResultCard: React.FC<Props> = ({
-    // result
+    result
 }) => {
-    const result: EmotionPeriodAnalyzeResult = {
-        period: {
-            from: "2025-03-01",
-            to: "2025-03-15"
-        },
-        dominantEmotions: ["радість", "вдячність", "тривожність", "спокій", "збудження", "гордість", "здивування"],
-        averageMoodScore: 6.8,
-        identifiedPatterns: [
-            {
-                pattern: "Спад настрою після робочих зустрічей",
-                possibleTriggers: ["тривалі мітинги", "відсутність зворотного зв'язку"],
-                linkedSchemas: ["відчуття неповноцінності", "перфекціонізм"]
-            },
-            {
-                pattern: "Покращення настрою у вихідні",
-                possibleTriggers: ["спілкування з друзями", "активний відпочинок"],
-                linkedSchemas: ["потреба в приналежності", "потреба в автономії"]
-            }
-        ],
-        schemasActivated: ["страх покинутості", "невдача", "прагнення до визнання"],
-        psychologicalInsights: "Ваш емоційний стан сильно залежить від зовнішньої оцінки. Ви переживаєте емоційні підйоми й спади залежно від продуктивності та соціального зворотного зв’язку.",
-        recommendations: [
-            "Практикуйте усвідомленість після стресових подій",
-            "Щодня відзначайте свої маленькі досягнення",
-            "Обмежте час перед екраном перед сном"
-        ],
-        sentimentAnalysis: {
-            overallSentiment: "змішаний",
-            positiveEntriesPercentage: 52,
-            negativeEntriesPercentage: 34,
-            neutralEntriesPercentage: 14
-        },
-        deepProfileSummary: "Ви емоційно свідомі та схильні до саморефлексії. Часто оцінюєте себе через призму результатів і соціального визнання. Створення стабільної рутини допоможе підвищити емоційну стійкість."
-    };
-
     return (
         <Box sx={{
             display: 'flex',
