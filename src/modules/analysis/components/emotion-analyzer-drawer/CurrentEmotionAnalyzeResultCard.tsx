@@ -82,19 +82,6 @@ export const CurrentEmotionAnalyzeResultCard: React.FC<Props> = ({
             }
 
             {
-                futureActions && (
-                    <>
-                        <Typography variant="subtitle1" marginTop={'10px'} fontWeight={'bold'}>
-                            Future actions
-                        </Typography>
-                        <Typography variant="body2">
-                            {futureActions}
-                        </Typography>
-                    </>
-                )
-            }
-
-            {
                 usefulConversation && (
                     <>
                         <Typography variant="subtitle1" marginTop={'10px'} fontWeight={'bold'}>
@@ -102,6 +89,18 @@ export const CurrentEmotionAnalyzeResultCard: React.FC<Props> = ({
                         </Typography>
                         <Typography variant="body2">
                             {usefulConversation}
+                        </Typography>
+                    </>
+                )
+            }
+            {
+                futureActions && (
+                    <>
+                        <Typography variant="subtitle1" marginTop={'10px'} fontWeight={'bold'}>
+                            Future actions
+                        </Typography>
+                        <Typography variant="body2">
+                            {futureActions}
                         </Typography>
                     </>
                 )
