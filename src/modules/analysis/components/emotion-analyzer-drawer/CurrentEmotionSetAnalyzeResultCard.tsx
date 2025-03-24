@@ -19,11 +19,14 @@ export const CurrentEmotionSetAnalyzeResultCard: React.FC<Props> = ({
             height: '100%',
             padding: '20px',
         }}>
+            <Typography variant="h6" marginTop={'10px'} marginBottom={'10px'} fontWeight={'bold'}>
+                Analyze emotion set result
+            </Typography>
             <Typography variant="subtitle1" fontWeight={'bold'}>
                 Recommendation
             </Typography>
 
-            <Typography variant="body2" textAlign={'justify'} marginTop={'10px'}>
+            <Typography variant="body2" textAlign={'left'} marginTop={'10px'}>
                 {recommendation}
             </Typography>
 
