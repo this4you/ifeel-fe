@@ -1,16 +1,52 @@
-import { Box, Chip, Divider, Stack, Typography } from '@mui/material';
+import { Box, Chip, Divider, Stack, Typography, Paper, LinearProgress, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import React from 'react';
 import moment from 'moment';
 import { EmotionAnalyzeResultCardFooter } from './EmotionAnalyzeResultCardFooter.tsx';
 import { EmotionPeriodAnalyzeResult } from "@analysis/models/EmotionPeriodAnalyzeResult.ts";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 type Props = {
     result: EmotionPeriodAnalyzeResult
 }
 
 export const EmotionPeriodAnalyzeResultCard: React.FC<Props> = ({
-    result
+    // result
 }) => {
+    const result: EmotionPeriodAnalyzeResult = {
+        period: {
+            from: "2025-03-01",
+            to: "2025-03-15"
+        },
+        dominantEmotions: ["радість", "вдячність", "тривожність", "спокій", "збудження", "гордість", "здивування"],
+        averageMoodScore: 6.8,
+        identifiedPatterns: [
+            {
+                pattern: "Спад настрою після робочих зустрічей",
+                possibleTriggers: ["тривалі мітинги", "відсутність зворотного зв'язку"],
+                linkedSchemas: ["відчуття неповноцінності", "перфекціонізм"]
+            },
+            {
+                pattern: "Покращення настрою у вихідні",
+                possibleTriggers: ["спілкування з друзями", "активний відпочинок"],
+                linkedSchemas: ["потреба в приналежності", "потреба в автономії"]
+            }
+        ],
+        schemasActivated: ["страх покинутості", "невдача", "прагнення до визнання"],
+        psychologicalInsights: "Ваш емоційний стан сильно залежить від зовнішньої оцінки. Ви переживаєте емоційні підйоми й спади залежно від продуктивності та соціального зворотного зв’язку.",
+        recommendations: [
+            "Практикуйте усвідомленість після стресових подій",
+            "Щодня відзначайте свої маленькі досягнення",
+            "Обмежте час перед екраном перед сном"
+        ],
+        sentimentAnalysis: {
+            overallSentiment: "змішаний",
+            positiveEntriesPercentage: 52,
+            negativeEntriesPercentage: 34,
+            neutralEntriesPercentage: 14
+        },
+        deepProfileSummary: "Ви емоційно свідомі та схильні до саморефлексії. Часто оцінюєте себе через призму результатів і соціального визнання. Створення стабільної рутини допоможе підвищити емоційну стійкість."
+    };
+
     return (
         <Box sx={{
             display: 'flex',
@@ -19,12 +55,12 @@ export const EmotionPeriodAnalyzeResultCard: React.FC<Props> = ({
             padding: '20px',
         }}>
             <Typography variant="h6" marginTop={'10px'} marginBottom={'10px'} fontWeight={'bold'}>
-                Analyze emotions period result
+                Emotional Summary for the Period
             </Typography>
             <Typography variant='subtitle2' color={'#9a9a9a'}>
                 {moment(result.period.from).format('MMMM D, YYYY')} - {moment(result.period.to).format('MMMM D, YYYY')}
             </Typography>
-            <Typography variant="subtitle1" marginTop={'50px'} marginBottom={'10px'} fontWeight={'bold'}>
+            <Typography variant="subtitle1" marginTop={'20px'} marginBottom={'8px'} fontWeight={'bold'}>
                 Dominant emotions:
             </Typography>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
@@ -34,7 +70,7 @@ export const EmotionPeriodAnalyzeResultCard: React.FC<Props> = ({
             </Box>
 
             <Box marginTop={'30px'}>
-                <Typography variant="subtitle1" fontWeight="bold">
+                <Typography variant="subtitle1" fontWeight="bold" marginBottom={'8px'}>
                     Average mood score:
                 </Typography>
                 <Typography variant="h6" color="primary">
@@ -43,7 +79,7 @@ export const EmotionPeriodAnalyzeResultCard: React.FC<Props> = ({
             </Box>
 
             <Box marginTop={'30px'}>
-                <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
+                <Typography variant="subtitle1" fontWeight="bold" marginBottom={'8px'}>
                     Identified patterns:
                 </Typography>
 
@@ -58,8 +94,8 @@ export const EmotionPeriodAnalyzeResultCard: React.FC<Props> = ({
                             backgroundColor: '#fafafa'
                         }}
                     >
-                        <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
-                            🧩 Pattern {index + 1}: {pattern.pattern}
+                        <Typography variant="body1" marginBottom={'12px'}>
+                            🧩 {pattern.pattern}
                         </Typography>
 
                         <Typography variant="subtitle2" fontWeight="medium" color="text.secondary">
@@ -84,7 +120,7 @@ export const EmotionPeriodAnalyzeResultCard: React.FC<Props> = ({
             </Box>
 
             <Box marginTop={'30px'}>
-                <Typography variant="subtitle1" fontWeight="bold">
+                <Typography variant="subtitle1" fontWeight="bold" marginBottom={'8px'}>
                     Activated schemas:
                 </Typography>
                 <Stack direction="row" gap={'10px'} flexWrap="wrap">
@@ -95,7 +131,7 @@ export const EmotionPeriodAnalyzeResultCard: React.FC<Props> = ({
             </Box>
 
             <Box marginTop={'30px'}>
-                <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
+                <Typography variant="subtitle1" fontWeight="bold" marginBottom={'8px'}>
                     Psychological analysis:
                 </Typography>
 
@@ -115,13 +151,16 @@ export const EmotionPeriodAnalyzeResultCard: React.FC<Props> = ({
             </Box>
 
             <Box marginTop={'30px'}>
-                <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
+                <Typography variant="subtitle1" fontWeight="bold" marginBottom={'8px'}>
                     Sentiment analysis:
                 </Typography>
-                <Stack direction="column" gap={'10px'}>
-                    <Chip label={`😊 Positive: ${result.sentimentAnalysis.positiveEntriesPercentage}%`} sx={{ backgroundColor: 'rgba(76, 175, 80, 0.15)', color: '#4caf50' }} />
-                    <Chip label={`😐 Neutral: ${result.sentimentAnalysis.neutralEntriesPercentage}%`} sx={{ backgroundColor: 'rgba(158, 158, 158, 0.15)', color: '#9e9e9e' }} />
-                    <Chip label={`😞 Negative: ${result.sentimentAnalysis.negativeEntriesPercentage}%`} sx={{ backgroundColor: 'rgba(244, 67, 54, 0.15)', color: '#f44336' }} />
+                <Stack spacing={1}>
+                    <Typography>😊 Positive: {result.sentimentAnalysis.positiveEntriesPercentage}%</Typography>
+                    <LinearProgress variant="determinate" value={result.sentimentAnalysis.positiveEntriesPercentage} sx={{ height: 10, borderRadius: 5 }} />
+                    <Typography>😐 Neutral: {result.sentimentAnalysis.neutralEntriesPercentage}%</Typography>
+                    <LinearProgress variant="determinate" value={result.sentimentAnalysis.neutralEntriesPercentage} sx={{ height: 10, borderRadius: 5 }} />
+                    <Typography>😞 Negative: {result.sentimentAnalysis.negativeEntriesPercentage}%</Typography>
+                    <LinearProgress variant="determinate" value={result.sentimentAnalysis.negativeEntriesPercentage} sx={{ height: 10, borderRadius: 5 }} />
                 </Stack>
                 <Typography variant="body2" color="text.secondary" marginTop={1}>
                     Overall sentiment: <strong>{result.sentimentAnalysis.overallSentiment}</strong>
@@ -129,16 +168,19 @@ export const EmotionPeriodAnalyzeResultCard: React.FC<Props> = ({
             </Box>
 
             <Box marginTop={'30px'}>
-                <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
+                <Typography variant="subtitle1" fontWeight="bold" marginBottom={'8px'}>
                     Recommendations:
                 </Typography>
-                <Stack component="ul" spacing={1} paddingLeft={2}>
+                <List>
                     {result.recommendations.map((rec, index) => (
-                        <Typography component="li" variant="body1" key={index}>
-                            {rec}
-                        </Typography>
+                        <ListItem key={index}>
+                            <ListItemIcon>
+                                <CheckCircleIcon color="primary" />
+                            </ListItemIcon>
+                            <ListItemText primary={rec} />
+                        </ListItem>
                     ))}
-                </Stack>
+                </List>
             </Box>
 
             <Divider sx={{ marginTop: '20px', marginBottom: '20px' }}/>
