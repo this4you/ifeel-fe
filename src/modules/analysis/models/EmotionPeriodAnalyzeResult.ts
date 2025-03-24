@@ -6,7 +6,6 @@ export interface EmotionPeriodAnalyzeResult {
     averageMoodScore: number;
     identifiedPatterns: IdentifiedPattern[];
     schemasActivated: string[];
-    psychologicalInsights: string;
     recommendations: string[];
     sentimentAnalysis: SentimentAnalysis;
     deepProfileSummary: string;

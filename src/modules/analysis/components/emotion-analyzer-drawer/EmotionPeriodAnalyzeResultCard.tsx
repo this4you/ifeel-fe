@@ -96,21 +96,10 @@ export const EmotionPeriodAnalyzeResultCard: React.FC<Props> = ({
             </Box>
 
             <Box marginTop={'30px'}>
-                <Typography variant="subtitle1" fontWeight="bold" marginBottom={'8px'}>
-                    Psychological analysis:
+                <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
+                    Psychological profile summary
                 </Typography>
-
-                <Typography variant="subtitle2" fontWeight="medium" gutterBottom>
-                    🧠 Short-term insights:
-                </Typography>
-                <Typography variant="body1" paragraph>
-                    {result.psychologicalInsights}
-                </Typography>
-
-                <Typography variant="subtitle2" fontWeight="medium" gutterBottom>
-                    🌌 Long-term profile summary:
-                </Typography>
-                <Typography variant="body1">
+                <Typography variant="body1" sx={{ whiteSpace: 'pre-line' }}>
                     {result.deepProfileSummary}
                 </Typography>
             </Box>
