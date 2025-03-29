@@ -49,7 +49,7 @@ export const EmotionsList: React.FC = () => {
                     alignItems={'center'}
                     width={'80%'}
                 >
-                    <Stack direction={'row'} spacing="5px">
+                    <Stack direction={'row'} spacing="10px">
                         <MdOutlineCreate
                             size={'20px'}
                             onClick={addNewEmotion}

@@ -1,10 +1,9 @@
 import React from "react";
 import Dialog from "@mui/material/Dialog";
-import { Box, Chip, DialogContentText, Grid, Paper, Stack, Typography } from "@mui/material";
+import { Box, DialogContentText, Typography } from "@mui/material";
 import DialogTitle from "@mui/material/DialogTitle";
-import Button from "@mui/material/Button";
-import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
+import { IoCloseOutline } from "react-icons/io5";
 import {
     EmotionAdviserList
 } from "@emotions/components/emotions-adviser-modal/emotion-adviser-list/EmotionAdviserList.tsx";
@@ -17,13 +16,26 @@ type Props = {
 export const EmotionAdviserModal: React.FC<Props> = ({ isOpen, onCloseHandler }) => {
     return (
         <Dialog
-            // fullWidth
             open={isOpen}
             maxWidth={'lg'}
-
         >
-            <Box sx={{ padding: '10px' }}>
-                <DialogTitle>Emotion adviser</DialogTitle>
+            <DialogTitle
+                sx={{
+                    position: 'sticky',
+                    top: 0,
+                    backgroundColor: 'background.paper',
+                    zIndex: 1,
+                    borderBottom: '1px solid',
+                    borderColor: 'divider',
+                    display: 'flex',
+                    width: '100%',
+                    justifyContent: 'space-between'
+                }}
+            >
+                <span>Emotion adviser</span>
+                <IoCloseOutline size={'30px'} cursor={'pointer'} onClick={onCloseHandler}/>
+            </DialogTitle>
+            <Box sx={{ padding: '10px', position: 'relative' }}>
                 <DialogContent>
                     <DialogContentText>
                         <Typography variant={'body2'}>
@@ -40,9 +52,6 @@ export const EmotionAdviserModal: React.FC<Props> = ({ isOpen, onCloseHandler })
                     </DialogContentText>
                     <EmotionAdviserList/>
                 </DialogContent>
-                <DialogActions>
-                    <Button onClick={onCloseHandler} variant={'contained'} color={'inherit'}>Close</Button>
-                </DialogActions>
             </Box>
         </Dialog>);
 }
