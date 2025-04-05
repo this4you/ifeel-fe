@@ -44,19 +44,18 @@ export const EmotionAdviserModal: React.FC<Props> = ({ isOpen, onCloseHandler })
             </DialogTitle>
             <Box sx={{ padding: '10px', position: 'relative' }}>
                 <DialogContent>
-                    <DialogContentText>
-                        <Typography variant={'body2'}>
-                            <p><strong>Pause for a moment.</strong> Take a few slow breaths in and out. <br/>Feel
-                                yourself — here and now.</p>
-                            <p>Try to answer a few simple questions:</p>
-                            <ul style={{ paddingLeft: '20px' }}>
-                                <li>What does my body feel like? Is there tension, pain, lightness?</li>
-                                <li>What thoughts are spinning in my head? What am I thinking about?</li>
-                                <li>What triggered this state? An event, a person, a memory?</li>
-                                <li>If my emotion were a color, a sound, or a temperature — what would it be?</li>
-                            </ul>
-                        </Typography>
-                    </DialogContentText>
+                    <Typography variant="body2" component="span" display="block" gutterBottom>
+                        <strong>Pause for a moment.</strong> Take a few slow breaths in and out. Feel yourself — here and now.
+                    </Typography>
+                    <Typography variant="body2" component="div" gutterBottom>
+                        Try to answer a few simple questions:
+                    </Typography>
+                    <ul>
+                        <li>What does my body feel like? Is there tension, pain, lightness?</li>
+                        <li>What thoughts are spinning in my head? What am I thinking about?</li>
+                        <li>What triggered this state? An event, a person, a memory?</li>
+                        <li>If my emotion were a color, a sound, or a temperature — what would it be?</li>
+                    </ul>
                     <EmotionAdviserList/>
                 </DialogContent>
             </Box>
