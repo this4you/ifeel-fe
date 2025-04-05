@@ -57,7 +57,11 @@ export const EmotionsList: React.FC = () => {
                         />
                         <HelpIcon
                             size={'20px'}
-                            onClick={showEmotionAdviser}
+                            color={isNewEmotionVisible ? 'initial' : palette.divider}
+                            onClick={isNewEmotionVisible
+                                ? showEmotionAdviser
+                                : () => ''
+                            }
                             cursor={'pointer'}
                         />
                         <MdDeleteOutline

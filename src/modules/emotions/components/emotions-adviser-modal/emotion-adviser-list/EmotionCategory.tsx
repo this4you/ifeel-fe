@@ -27,6 +27,9 @@ export const EmotionCategory: React.FC<Props> = ({ category, color }) => {
             <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
                 {category.emotions.map((emotion) => (
                     <Chip
+                        sx={{
+                            textTransform: 'capitalize'
+                        }}
                         key={emotion}
                         label={emotion}
                         onClick={() => selectEmotionAdvice(emotion)}

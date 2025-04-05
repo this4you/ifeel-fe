@@ -7,7 +7,9 @@ export const useSelectEmotionAdvice = () => {
     const { setIsEmotionAdvisorVisible } = useEmotionAdvisorStore();
 
     return async (emotion: string) => {
-        emotionForm.setValue('name', emotion);
+        const capitalizedEmotion = emotion.charAt(0).toUpperCase() + emotion.slice(1);
+
+        emotionForm.setValue('name', capitalizedEmotion);
         setIsEmotionAdvisorVisible(false);
     }
 };
