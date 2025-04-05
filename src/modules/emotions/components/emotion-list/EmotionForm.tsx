@@ -1,9 +1,9 @@
 import { Box, Button, Stack } from '@mui/material';
 import { LogoDark } from '@commons/components';
 import React, { useCallback } from 'react';
-import { FormWrapper } from '@commons/components/form/FormWrapper.tsx';
+import { FormWrapper } from '@commons/form/FormWrapper.tsx';
 import { Emotion } from '../../models/Emotion.ts';
-import { FormTextField } from '@commons/components/form/FormTextField.tsx';
+import { FormTextField } from '@commons/form/FormTextField.tsx';
 import { useFormContext } from 'react-hook-form';
 import { useSaveEmotion } from '../../use-cases/useSaveEmotion.ts';
 import { useGetEmotionFormDefaultValue } from '../../use-cases/useGetEmotionFormDefaultValue.ts';
@@ -14,7 +14,7 @@ export const EmotionForm: React.FC = () => {
     const saveEmotion = useSaveEmotion();
 
     return (
-        <FormWrapper defaultValues={getEmotionsFormDefaultValue()} submit={(data: Emotion) => {
+        <FormWrapper formName={'emotion-form'} defaultValues={getEmotionsFormDefaultValue()} submit={(data: Emotion) => {
             saveEmotion(data);
         }}>
             <EmotionFormContent/>

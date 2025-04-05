@@ -1,4 +1,4 @@
-import { Box, Chip, Divider, Stack, Typography, Paper, LinearProgress, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
+import { Box, Chip, Divider, Stack, Typography, LinearProgress, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import React from 'react';
 import moment from 'moment';
 import { EmotionAnalyzeResultCardFooter } from './EmotionAnalyzeResultCardFooter.tsx';
