@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Dialog from "@mui/material/Dialog";
 import { Box, DialogContentText, Typography } from "@mui/material";
 import DialogTitle from "@mui/material/DialogTitle";
@@ -7,6 +7,7 @@ import { IoCloseOutline } from "react-icons/io5";
 import {
     EmotionAdviserList
 } from "@emotions/components/emotions-adviser-modal/emotion-adviser-list/EmotionAdviserList.tsx";
+import { useLoadEmotionAdvices } from "@emotions/use-cases/useLoadEmotionAdvices.ts";
 
 type Props = {
     isOpen: boolean;
@@ -14,6 +15,12 @@ type Props = {
 }
 
 export const EmotionAdviserModal: React.FC<Props> = ({ isOpen, onCloseHandler }) => {
+    const loadEmotionAdvices = useLoadEmotionAdvices();
+
+    useEffect(() => {
+        loadEmotionAdvices();
+    }, []);
+
     return (
         <Dialog
             open={isOpen}
