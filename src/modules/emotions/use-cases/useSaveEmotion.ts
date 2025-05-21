@@ -20,7 +20,6 @@ export const useSaveEmotion = () => {
         try {
             showLoader();
 
-
             if (emotion.id === null) {
                 const newEmotion = await createEmotionRest(activeEmotionSetId, emotion);
 
@@ -31,7 +30,6 @@ export const useSaveEmotion = () => {
                 const updatedEmotion = await updateEmotionRest(activeEmotionSetId, emotion);
                 updateEmotion(updatedEmotion);
             }
-
         } catch (e) {
             log(e as Error, 'Error happens during create emotion');
         } finally {
