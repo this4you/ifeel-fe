@@ -1,0 +1,97 @@
+{
+  "google": {
+    "signIn": "Sign in with Google",
+    "logOut": "Log out"
+  },
+  "landing": {
+    "whatDoYouFeel": "What do you feel?",
+    "tryDescribe": "Try to describe your emotions at the moment.",
+    "listenChild": "Listen to your inner child.",
+    "doRegularly": "Do it regularly.",
+    "startUnderstand": "Start to understand yourself!"
+  },
+  "moodSelector": {
+    "howFeeling": "How are you feeling now?",
+    "confirm": "Confirm"
+  },
+  "emotionForm": {
+    "emotionLabel": "What is your emotion?",
+    "descriptionLabel": "Description",
+    "needLabel": "Need",
+    "schemaLabel": "Schema",
+    "conversationLabel": "Conversation with child",
+    "futureActionsLabel": "Future actions",
+    "cancel": "Cancel",
+    "save": "Save"
+  },
+  "emotionSets": {
+    "title": "Emotions",
+    "noEmotions": "No emotions :("
+  },
+  "ai": {
+    "drawerTitle": "AI Emotion analyzer",
+    "analyzeCurrentEmotion": {
+      "name": "Analyze current emotion",
+      "description": "Analyze one selected emotion.",
+      "disabledInfo": "You must open existing emotion to execute it."
+    },
+    "analyzeEmotionSet": {
+      "name": "Analyze current emotions set",
+      "description": "Analyze the list of emotions from selected set.",
+      "disabledInfo": "You must open emotions set to execute it."
+    },
+    "analyzePeriod": {
+      "name": "Analyze emotion for period",
+      "description": "Provide an emotion analyse for selected period"
+    },
+    "close": "Close",
+    "tooltip": "Analyze emotion by AI"
+  },
+  "emotionAdviserModal": {
+    "title": "Emotion adviser",
+    "intro1": "Pause for a moment. Take a few slow breaths in and out. Feel yourself — here and now.",
+    "intro2": "Try to answer a few simple questions:",
+    "questions": [
+      "What does my body feel like? Is there tension, pain, lightness?",
+      "What thoughts are spinning in my head? What am I thinking about?",
+      "What triggered this state? An event, a person, a memory?",
+      "If my emotion were a color, a sound, or a temperature — what would it be?"
+    ]
+  },
+  "analyzeResult": {
+    "currentEmotionTitle": "Analyze current emotion result",
+    "emotion": "Emotion",
+    "description": "Description",
+    "aiAnalyze": "AI analyze",
+    "childNeed": "Child need",
+    "schema": "Schema",
+    "usefulConversation": "Useful conversation",
+    "futureActions": "Future actions",
+    "emotionSetTitle": "Analyze emotion set result",
+    "recommendation": "Recommendation",
+    "periodSummaryTitle": "Emotional Summary for the Period",
+    "dominantEmotions": "Dominant emotions:",
+    "averageMood": "Average mood score:",
+    "identifiedPatterns": "Identified patterns:",
+    "possibleTriggers": "Possible triggers:",
+    "linkedSchemas": "Linked schemas:",
+    "activatedSchemas": "Activated schemas:",
+    "profileSummary": "Psychological profile summary",
+    "sentimentAnalysis": "Sentiment analysis:",
+    "overallSentiment": "Overall sentiment:",
+    "recommendations": "Recommendations:",
+    "positive": "Positive",
+    "neutral": "Neutral",
+    "negative": "Negative",
+    "satisfied": "Satisfied",
+    "verySatisfied": "Very Satisfied"
+  },
+  "emotionPeriodPicker": {
+    "selectPeriod": "Select period for analysis",
+    "cancel": "Cancel",
+    "analyze": "Analyse"
+  },
+  "newEmotion": "New emotion",
+  "averageMoodScoreLabel": "Average mood score:",
+  "dominantEmotionsLabel": "Dominant emotions:"
+}

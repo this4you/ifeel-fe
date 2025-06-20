@@ -1,4 +1,5 @@
 import { Box, Stack, Typography, useTheme } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import { MdOutlineCreate } from 'react-icons/md';
 import { MdDeleteOutline } from 'react-icons/md';
 import { LuDownloadCloud } from "react-icons/lu";
@@ -14,6 +15,7 @@ import { useExportReport } from '../../use-cases/useExportReport.ts';
 export const EmotionsSets: React.FC = () => {
     const {  palette } = useTheme();
     const { emotionSets, activeEmotionSetId } = useEmotionSetsStore();
+    const { t } = useTranslation();
 
     const displayMoodSelector = useDisplayMoodSelector();
     const deleteActiveEmotionSet = useDeleteActiveEmotionSet();
@@ -22,7 +24,7 @@ export const EmotionsSets: React.FC = () => {
 
     useEffect(() => {
         initEmotionSets()
-    }, []);
+    }, [initEmotionSets]);
 
     return (
         <Box sx={{
@@ -46,7 +48,7 @@ export const EmotionsSets: React.FC = () => {
                     alignItems={'center'}
                 >
                     <Typography variant="subtitle1">
-                        Emotions
+                        {t('emotionSets.title')}
                     </Typography>
                     <Stack direction={'row'} spacing="10px">
                         <MdOutlineCreate
@@ -85,7 +87,7 @@ export const EmotionsSets: React.FC = () => {
                                 color={palette.text.primary}
                             />
                             <Typography variant={'subtitle1'}>
-                                No emotions :(
+                                {t('emotionSets.noEmotions')}
                             </Typography>
                         </Stack>
                     </Box>

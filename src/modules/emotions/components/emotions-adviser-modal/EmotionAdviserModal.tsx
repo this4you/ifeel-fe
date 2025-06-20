@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useTranslation } from 'react-i18next';
 import Dialog from "@mui/material/Dialog";
 import { Box, DialogContentText, Typography } from "@mui/material";
 import DialogTitle from "@mui/material/DialogTitle";
@@ -16,10 +17,11 @@ type Props = {
 
 export const EmotionAdviserModal: React.FC<Props> = ({ isOpen, onCloseHandler }) => {
     const loadEmotionAdvices = useLoadEmotionAdvices();
+    const { t } = useTranslation();
 
     useEffect(() => {
         loadEmotionAdvices();
-    }, []);
+    }, [loadEmotionAdvices]);
 
     return (
         <Dialog
@@ -39,22 +41,22 @@ export const EmotionAdviserModal: React.FC<Props> = ({ isOpen, onCloseHandler })
                     justifyContent: 'space-between'
                 }}
             >
-                <span>Emotion adviser</span>
+                <span>{t('emotionAdviserModal.title')}</span>
                 <IoCloseOutline size={'30px'} cursor={'pointer'} onClick={onCloseHandler}/>
             </DialogTitle>
             <Box sx={{ padding: '10px', position: 'relative' }}>
                 <DialogContent>
                     <Typography variant="body2" component="span" display="block" gutterBottom>
-                        <strong>Pause for a moment.</strong> Take a few slow breaths in and out. Feel yourself — here and now.
+                        {t('emotionAdviserModal.intro1')}
                     </Typography>
                     <Typography variant="body2" component="div" gutterBottom>
-                        Try to answer a few simple questions:
+                        {t('emotionAdviserModal.intro2')}
                     </Typography>
                     <ul>
-                        <li>What does my body feel like? Is there tension, pain, lightness?</li>
-                        <li>What thoughts are spinning in my head? What am I thinking about?</li>
-                        <li>What triggered this state? An event, a person, a memory?</li>
-                        <li>If my emotion were a color, a sound, or a temperature — what would it be?</li>
+                        <li>{t('emotionAdviserModal.questions.0')}</li>
+                        <li>{t('emotionAdviserModal.questions.1')}</li>
+                        <li>{t('emotionAdviserModal.questions.2')}</li>
+                        <li>{t('emotionAdviserModal.questions.3')}</li>
                     </ul>
                     <EmotionAdviserList/>
                 </DialogContent>

@@ -12,7 +12,7 @@ export const PrivateRoute: React.FC<PropsWithChildren> = ({ children }) => {
 
     useEffect(() => {
         initUserInfo();
-    }, []);
+    }, [initUserInfo]);
 
     if (isLoading && !user) {
         return <> </>;

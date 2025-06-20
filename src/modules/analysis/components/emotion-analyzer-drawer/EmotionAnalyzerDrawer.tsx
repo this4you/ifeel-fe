@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Box, Divider, Drawer, IconButton, Stack, Typography, useTheme } from '@mui/material';
 import { AiEmotionAnalyzerButton } from '@emotions/components/emotion-list/AiEmotionAnalyzerButton.tsx';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -19,6 +20,7 @@ export const EmotionAnalyzerDrawer: React.FC = () => {
     const [isEmotionPeriodModalOpen, setIsEmotionPeriodModalOpen] = useState(false)
     const { activeEmotionId } = useEmotionsStore();
     const { activeEmotionSetId } = useEmotionSetsStore();
+    const { t } = useTranslation();
     const { emotionAnalyzeResult, isLoading } = useAiEmotionAnalyzerStore();
 
     const analyzeCurrentEmotion = useAnalyzeCurrentEmotion();
@@ -77,7 +79,7 @@ export const EmotionAnalyzerDrawer: React.FC = () => {
                             <ChevronRightIcon/>
                         </IconButton>
                         <Typography variant="subtitle1" component="div">
-                            AI Emotion analyzer
+                            {t('ai.drawerTitle')}
                         </Typography>
                     </Stack>
                     <EmotionPeriodPickerModal
@@ -92,23 +94,23 @@ export const EmotionAnalyzerDrawer: React.FC = () => {
                                     direction={'column'}
                                 >
                                     <EmotionAnalyzerItem
-                                        name="Analyze current emotion"
-                                        description="Analyze one selected emotion."
+                                        name={t('ai.analyzeCurrentEmotion.name')}
+                                        description={t('ai.analyzeCurrentEmotion.description')}
                                         onClick={analyzeCurrentEmotion}
                                         isLoading={isLoading['EMOTION_ANALYZE']}
                                         disabled={activeEmotionId === null}
-                                        disabledInfo={'You must open existing emotion to execute it.'}
+                                        disabledInfo={t('ai.analyzeCurrentEmotion.disabledInfo')}
                                         icon={
                                             <PiMaskHappy size={'30px'}/>
                                         }
                                     />
                                     <EmotionAnalyzerItem
-                                        name="Analyze current emotions set"
-                                        description="Analyze the list of emotions from selected set."
+                                        name={t('ai.analyzeEmotionSet.name')}
+                                        description={t('ai.analyzeEmotionSet.description')}
                                         onClick={analyzeCurrentEmotionSet}
                                         isLoading={isLoading['EMOTION_SET_ANALYZE']}
                                         disabled={activeEmotionSetId === null}
-                                        disabledInfo={'You must open emotions set to execute it.'}
+                                        disabledInfo={t('ai.analyzeEmotionSet.disabledInfo')}
                                         icon={
                                             <FaTheaterMasks size={'30px'}/>
                                         }
@@ -116,8 +118,8 @@ export const EmotionAnalyzerDrawer: React.FC = () => {
                                     <Divider/>
                                     <EmotionAnalyzerItem
                                         isLoading={isLoading['EMOTION_PERIOD_ANALYZE']}
-                                        name="Analyze emotion for period"
-                                        description="Provide an emotion analise for selected period"
+                                        name={t('ai.analyzePeriod.name')}
+                                        description={t('ai.analyzePeriod.description')}
                                         onClick={openAnalyzeEmotionPeriodModal}
                                         icon={
                                             <BsCalendar2Month size={'30px'}/>
