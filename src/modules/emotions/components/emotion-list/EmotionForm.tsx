@@ -1,7 +1,7 @@
 import { Box, Button, Stack } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { LogoDark } from '@commons/components';
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { FormWrapper } from '@commons/form/FormWrapper.tsx';
 import { Emotion } from '../../models/Emotion.ts';
 import { FormTextField } from '@commons/form/FormTextField.tsx';
@@ -13,7 +13,6 @@ export const EmotionForm: React.FC = () => {
     const getEmotionsFormDefaultValue = useGetEmotionFormDefaultValue();
 
     const saveEmotion = useSaveEmotion();
-    const { t } = useTranslation();
 
     return (
         <FormWrapper formName={'emotion-form'} defaultValues={getEmotionsFormDefaultValue()} submit={(data: Emotion) => {
@@ -26,7 +25,9 @@ export const EmotionForm: React.FC = () => {
 
 
 const EmotionFormContent: React.FC = () => {
-    const { reset, formState: { isDirty } } = useFormContext();
+    const { reset, formState } = useFormContext();
+    const { t } = useTranslation();
+    const isDirty = useMemo(() => formState.isDirty, [formState.isDirty]);
 
     const onCancelClick = useCallback(() => {
         reset();

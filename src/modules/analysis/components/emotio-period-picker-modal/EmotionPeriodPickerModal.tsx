@@ -44,7 +44,7 @@ export const EmotionPeriodPickerModal: React.FC<Props> = ({ isOpen, onCloseHandl
                 to: formatDate(dateRange.endDate)
             });
         }
-    }, [analyzeEmotionPeriod, dateRange, onCloseHandler])
+    }, [analyzeEmotionPeriod, dateRange])
 
     return (
         <Dialog

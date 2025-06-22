@@ -30,7 +30,7 @@ export const EmotionsList: React.FC = () => {
         if (activeEmotionSetId) {
             initEmotions(activeEmotionSetId);
         }
-    }, [activeEmotionSetId, initEmotions]);
+    }, [activeEmotionSetId]);
 
     return (
         <Box sx={{
