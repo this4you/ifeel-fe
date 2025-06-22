@@ -1,4 +1,5 @@
 import { Box, Button, Fade, IconContainerProps, Rating, styled, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import React, { useCallback, useState } from 'react';
 import { useCreateEmotionSet } from '../../use-cases/useCreateEmotionSet.ts';
 import { getMoodScoreItem } from '../../utils/getMoodScoreItem.tsx';
@@ -37,6 +38,7 @@ export const MoodSelector: React.FC = () => {
     const isConfirmVisible = moodScore !== null;
 
     const createEmotionSet = useCreateEmotionSet();
+    const { t } = useTranslation();
 
     const onConfirmClick = useCallback(() => {
         if (moodScore) {
@@ -51,7 +53,7 @@ export const MoodSelector: React.FC = () => {
             alignItems: 'center'
         }}>
             <Typography variant={'h5'} marginBottom={2}>
-                How are you feeling now?
+                {t('moodSelector.howFeeling')}
             </Typography>
             <StyledRating
                 name="highlight-selected-only"
@@ -68,7 +70,7 @@ export const MoodSelector: React.FC = () => {
                         variant={'contained'}
                         onClick={onConfirmClick}
                     >
-                        Confirm
+                        {t('moodSelector.confirm')}
                     </Button>
                 </Fade>
             }

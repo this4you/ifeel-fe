@@ -1,4 +1,5 @@
 import React from 'react';
+import i18n from '../../../i18n';
 
 type MoodScoreItem = {
     icon: React.ReactElement;
@@ -38,15 +39,15 @@ const moodScoreItems: {
     },
     8: {
         icon: <span>😊</span>,
-        label: 'Neutral',
+        label: i18n.t('analyzeResult.neutral'),
     },
     9: {
         icon: <span>😍</span>,
-        label: 'Satisfied',
+        label: i18n.t('analyzeResult.satisfied'),
     },
     10: {
         icon: <span>😎</span>,
-        label: 'Very Satisfied',
+        label: i18n.t('analyzeResult.verySatisfied'),
     },
 };
 

@@ -1,5 +1,6 @@
 import { Box, Chip, Divider, Stack, Typography, LinearProgress, List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import moment from 'moment';
 import { EmotionAnalyzeResultCardFooter } from './EmotionAnalyzeResultCardFooter.tsx';
 import { EmotionPeriodAnalyzeResult } from "@analysis/models/EmotionPeriodAnalyzeResult.ts";
@@ -12,6 +13,7 @@ type Props = {
 export const EmotionPeriodAnalyzeResultCard: React.FC<Props> = ({
     result
 }) => {
+    const { t } = useTranslation();
     return (
         <Box sx={{
             display: 'flex',
@@ -20,13 +22,13 @@ export const EmotionPeriodAnalyzeResultCard: React.FC<Props> = ({
             padding: '20px',
         }}>
             <Typography variant="h6" marginTop={'10px'} marginBottom={'10px'} fontWeight={'bold'}>
-                Emotional Summary for the Period
+                {t('analyzeResult.periodSummaryTitle')}
             </Typography>
             <Typography variant='subtitle2' color={'#9a9a9a'}>
                 {moment(result.period.from).format('MMMM D, YYYY')} - {moment(result.period.to).format('MMMM D, YYYY')}
             </Typography>
             <Typography variant="subtitle1" marginTop={'20px'} marginBottom={'8px'} fontWeight={'bold'}>
-                Dominant emotions:
+                {t('analyzeResult.dominantEmotions')}
             </Typography>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
                 {result.dominantEmotions.map((it, index) => (
@@ -36,7 +38,7 @@ export const EmotionPeriodAnalyzeResultCard: React.FC<Props> = ({
 
             <Box marginTop={'30px'}>
                 <Typography variant="subtitle1" fontWeight="bold" marginBottom={'8px'}>
-                    Average mood score:
+                    {t('analyzeResult.averageMood')}
                 </Typography>
                 <Typography variant="h6" color="primary">
                     {result.averageMoodScore.toFixed(1)} / 10
@@ -45,7 +47,7 @@ export const EmotionPeriodAnalyzeResultCard: React.FC<Props> = ({
 
             <Box marginTop={'30px'}>
                 <Typography variant="subtitle1" fontWeight="bold" marginBottom={'8px'}>
-                    Identified patterns:
+                    {t('analyzeResult.identifiedPatterns')}
                 </Typography>
 
                 {result.identifiedPatterns.map((pattern, index) => (
@@ -64,7 +66,7 @@ export const EmotionPeriodAnalyzeResultCard: React.FC<Props> = ({
                         </Typography>
 
                         <Typography variant="subtitle2" fontWeight="medium" color="text.secondary">
-                            📍 Possible triggers:
+                            📍 {t('analyzeResult.possibleTriggers')}
                         </Typography>
                         <Stack direction="row" flexWrap="wrap" gap={'10px'} marginBottom={1}>
                             {pattern.possibleTriggers.map((trigger, i) => (
@@ -73,7 +75,7 @@ export const EmotionPeriodAnalyzeResultCard: React.FC<Props> = ({
                         </Stack>
 
                         <Typography variant="subtitle2" fontWeight="medium" color="text.secondary">
-                            🧠 Linked schemas:
+                            🧠 {t('analyzeResult.linkedSchemas')}
                         </Typography>
                         <Stack direction="row" flexWrap="wrap" gap={'10px'}>
                             {pattern.linkedSchemas.map((schema, i) => (
@@ -86,7 +88,7 @@ export const EmotionPeriodAnalyzeResultCard: React.FC<Props> = ({
 
             <Box marginTop={'30px'}>
                 <Typography variant="subtitle1" fontWeight="bold" marginBottom={'8px'}>
-                    Activated schemas:
+                    {t('analyzeResult.activatedSchemas')}
                 </Typography>
                 <Stack direction="row" gap={'10px'} flexWrap="wrap">
                     {result.schemasActivated.map((schema, index) => (
@@ -97,7 +99,7 @@ export const EmotionPeriodAnalyzeResultCard: React.FC<Props> = ({
 
             <Box marginTop={'30px'}>
                 <Typography variant="subtitle1" fontWeight="bold" gutterBottom>
-                    Psychological profile summary
+                    {t('analyzeResult.profileSummary')}
                 </Typography>
                 <Typography variant="body1" sx={{ whiteSpace: 'pre-line' }}>
                     {result.deepProfileSummary}
@@ -106,24 +108,24 @@ export const EmotionPeriodAnalyzeResultCard: React.FC<Props> = ({
 
             <Box marginTop={'30px'}>
                 <Typography variant="subtitle1" fontWeight="bold" marginBottom={'8px'}>
-                    Sentiment analysis:
+                    {t('analyzeResult.sentimentAnalysis')}
                 </Typography>
                 <Stack spacing={1}>
-                    <Typography>😊 Positive: {result.sentimentAnalysis.positiveEntriesPercentage}%</Typography>
+                    <Typography>😊 {t('analyzeResult.positive')}: {result.sentimentAnalysis.positiveEntriesPercentage}%</Typography>
                     <LinearProgress variant="determinate" value={result.sentimentAnalysis.positiveEntriesPercentage} sx={{ height: 10, borderRadius: 5 }} />
-                    <Typography>😐 Neutral: {result.sentimentAnalysis.neutralEntriesPercentage}%</Typography>
+                    <Typography>😐 {t('analyzeResult.neutral')}: {result.sentimentAnalysis.neutralEntriesPercentage}%</Typography>
                     <LinearProgress variant="determinate" value={result.sentimentAnalysis.neutralEntriesPercentage} sx={{ height: 10, borderRadius: 5 }} />
-                    <Typography>😞 Negative: {result.sentimentAnalysis.negativeEntriesPercentage}%</Typography>
+                    <Typography>😞 {t('analyzeResult.negative')}: {result.sentimentAnalysis.negativeEntriesPercentage}%</Typography>
                     <LinearProgress variant="determinate" value={result.sentimentAnalysis.negativeEntriesPercentage} sx={{ height: 10, borderRadius: 5 }} />
                 </Stack>
                 <Typography variant="body2" color="text.secondary" marginTop={1}>
-                    Overall sentiment: <strong>{result.sentimentAnalysis.overallSentiment}</strong>
+                    {t('analyzeResult.overallSentiment')} <strong>{result.sentimentAnalysis.overallSentiment}</strong>
                 </Typography>
             </Box>
 
             <Box marginTop={'30px'}>
                 <Typography variant="subtitle1" fontWeight="bold" marginBottom={'8px'}>
-                    Recommendations:
+                    {t('analyzeResult.recommendations')}
                 </Typography>
                 <List>
                     {result.recommendations.map((rec, index) => (

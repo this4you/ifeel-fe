@@ -1,4 +1,5 @@
 import { Button, IconButton, Stack } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt';
 import React from 'react';
@@ -6,6 +7,7 @@ import { useCloseEmotionResult } from '../../use-cases/useCloseEmotionResult.ts'
 
 export const EmotionAnalyzeResultCardFooter: React.FC = () => {
     const closeEmotionResult = useCloseEmotionResult();
+    const { t } = useTranslation();
 
     return (
         <Stack
@@ -40,7 +42,7 @@ export const EmotionAnalyzeResultCardFooter: React.FC = () => {
                 }}
                 onClick={closeEmotionResult}
             >
-                Close
+                {t('ai.close')}
             </Button>
         </Stack>
     );

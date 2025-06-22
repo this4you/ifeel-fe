@@ -1,5 +1,6 @@
 import { Box, Stack, useTheme } from '@mui/material';
 import { MdDeleteOutline, MdOutlineCreate, MdHelpOutline as HelpIcon } from 'react-icons/md';
+import { useTranslation } from 'react-i18next';
 import { useInitEmotions } from '../../use-cases/useInitEmotions.ts';
 import { useEffect } from 'react';
 import { useEmotionSetsStore } from '../../state/useEmotionSetsStore.ts';
@@ -15,6 +16,7 @@ import { useCloseEmotionAdviser } from "@emotions/use-cases/useCloseEmotionAdvis
 export const EmotionsList: React.FC = () => {
     const { palette } = useTheme();
     const { activeEmotionSetId } = useEmotionSetsStore();
+    const { t } = useTranslation();
     const { isEmotionAdvisorVisible } = useEmotionAdvisorStore();
     const { isNewEmotionVisible, emotions, activeEmotionId } = useEmotionsStore();
 
@@ -74,7 +76,7 @@ export const EmotionsList: React.FC = () => {
             </Box>
             <Stack direction={'column'} alignItems={'center'}>
                 {isNewEmotionVisible && (
-                    <EmotionItem emotion={{ name: 'New emotion' }} isActive/>
+                    <EmotionItem emotion={{ name: t('newEmotion') }} isActive/>
                 )}
                 {
                     emotions.length > 0 && (

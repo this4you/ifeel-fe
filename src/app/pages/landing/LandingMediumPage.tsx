@@ -3,9 +3,11 @@ import { LeftSidebar, MainContent } from '@commons/containers';
 import { LogoLight } from '@commons/components';
 import { GoogleLogin } from '@auth/components';
 import { Box, Typography, useTheme } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 
 export const LandingMediumPage = () => {
     const theme = useTheme();
+    const { t } = useTranslation();
     return (
         <PageContainer>
             <LeftSidebar>
@@ -30,27 +32,27 @@ export const LandingMediumPage = () => {
                     borderRadius: theme.shape.borderRadius,
                 }}>
                     <Typography variant='h5'>
-                        What do you feel?
+                        {t('landing.whatDoYouFeel')}
                     </Typography>
                     <Typography variant='subtitle1' sx={{
                         marginTop:'40px'
                     }}>
-                        Try to describe your emotions at the moment.
+                        {t('landing.tryDescribe')}
                     </Typography>
                     <Typography variant='subtitle1' sx={{
                         marginTop:'25px'
                     }}>
-                        Listen to your inner child.
+                        {t('landing.listenChild')}
                     </Typography>
                     <Typography variant='subtitle1' sx={{
                         marginTop:'25px'
                     }}>
-                        Do it regularly.
+                        {t('landing.doRegularly')}
                     </Typography>
                     <Typography variant='h5' sx={{
                         marginTop:'40px'
                     }}>
-                        Start to understand yourself!
+                        {t('landing.startUnderstand')}
                     </Typography>
                 </Box>
             </MainContent>

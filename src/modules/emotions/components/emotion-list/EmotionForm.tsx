@@ -1,6 +1,7 @@
 import { Box, Button, Stack } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import { LogoDark } from '@commons/components';
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { FormWrapper } from '@commons/form/FormWrapper.tsx';
 import { Emotion } from '../../models/Emotion.ts';
 import { FormTextField } from '@commons/form/FormTextField.tsx';
@@ -24,7 +25,9 @@ export const EmotionForm: React.FC = () => {
 
 
 const EmotionFormContent: React.FC = () => {
-    const { reset, formState: { isDirty } } = useFormContext();
+    const { reset, formState } = useFormContext();
+    const { t } = useTranslation();
+    const isDirty = useMemo(() => formState.isDirty, [formState.isDirty]);
 
     const onCancelClick = useCallback(() => {
         reset();
@@ -66,7 +69,7 @@ const EmotionFormContent: React.FC = () => {
                     variant={'outlined'}
                     id="name"
                     name="name"
-                    label="What is your emotion?"
+                    label={t('emotionForm.emotionLabel')}
                 />
                 <FormTextField
                     required
@@ -74,7 +77,7 @@ const EmotionFormContent: React.FC = () => {
                     variant={'outlined'}
                     id="description"
                     name="description"
-                    label="Description"
+                    label={t('emotionForm.descriptionLabel')}
                     multiline
                     rows="4"
                 />
@@ -83,21 +86,21 @@ const EmotionFormContent: React.FC = () => {
                     variant={'outlined'}
                     id="childNeed"
                     name="childNeed"
-                    label="Need"
+                    label={t('emotionForm.needLabel')}
                 />
                 <FormTextField
                     fullWidth
                     variant={'outlined'}
                     id="schema"
                     name="schema"
-                    label="Schema"
+                    label={t('emotionForm.schemaLabel')}
                 />
                 <FormTextField
                     fullWidth
                     variant={'outlined'}
                     id="usefulConversation"
                     name="usefulConversation"
-                    label="Conversation with child"
+                    label={t('emotionForm.conversationLabel')}
                     multiline
                     rows="4"
                 />
@@ -106,7 +109,7 @@ const EmotionFormContent: React.FC = () => {
                     variant={'outlined'}
                     id="futureActions"
                     name="futureActions"
-                    label="Future actions"
+                    label={t('emotionForm.futureActionsLabel')}
                     multiline
                     rows="4"
                 />
@@ -125,14 +128,14 @@ const EmotionFormContent: React.FC = () => {
                         onClick={onCancelClick}
                         disabled={!isDirty}
                     >
-                        Cancel
+                        {t('emotionForm.cancel')}
                     </Button>
                     <Button
                         type={'submit'}
                         variant={'contained'}
                         disabled={!isDirty}
                     >
-                        Save
+                        {t('emotionForm.save')}
                     </Button>
                 </Stack>
             </Box>

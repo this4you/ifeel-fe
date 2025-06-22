@@ -1,4 +1,5 @@
 import { Box, Tooltip, useTheme } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import React from 'react';
 import { CgMenuGridO as Icon } from "react-icons/cg";
 
@@ -10,6 +11,7 @@ export const AiEmotionAnalyzerButton: React.FC<Props> = ({
     onClick
 }) => {
     const { palette, spacing } = useTheme();
+    const { t } = useTranslation();
 
     return (
             <Box
@@ -27,7 +29,7 @@ export const AiEmotionAnalyzerButton: React.FC<Props> = ({
                     },
                 },
             ]}>
-                <Tooltip title="Analyze emotion by AI" placement={'left'}>
+                <Tooltip title={t('ai.tooltip')} placement={'left'}>
                     <Box>
                         <Icon
                             size={'35px'}

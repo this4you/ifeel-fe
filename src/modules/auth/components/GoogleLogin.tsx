@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { Box, Typography, useTheme } from '@mui/material';
 import GoogleIcon from '@mui/icons-material/Google';
@@ -7,6 +8,7 @@ import { useGoogleOAuthLogin } from '../use-cases/useGoogleOAuthLogin.ts';
 export const GoogleLogin: React.FC = () => {
     const theme = useTheme();
     const googleLogin = useGoogleOAuthLogin();
+    const { t } = useTranslation();
 
     return (
         <Box
@@ -31,7 +33,7 @@ export const GoogleLogin: React.FC = () => {
             ]}>
             <GoogleIcon color="primary"/>
             <Typography variant={'subtitle2'}>
-                Sing in with Google
+                {t('google.signIn')}
             </Typography>
         </Box>
     )

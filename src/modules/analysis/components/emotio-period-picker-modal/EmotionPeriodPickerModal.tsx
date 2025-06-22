@@ -4,6 +4,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";
+import { useTranslation } from 'react-i18next';
 import { DateRangePicker, Range, RangeKeyDict } from 'react-date-range';
 import { Box } from "@mui/material";
 import { useAnalyzeEmotionPeriod } from "@analysis/use-cases/useAnalyzeEmotionPeriod.ts";
@@ -22,6 +23,7 @@ type Props = {
 
 export const EmotionPeriodPickerModal: React.FC<Props> = ({ isOpen, onCloseHandler }) => {
     const analyzeEmotionPeriod = useAnalyzeEmotionPeriod();
+    const { t } = useTranslation();
 
     const [dateRange, setDateRange] = useState({
         startDate: new Date(),
@@ -50,7 +52,7 @@ export const EmotionPeriodPickerModal: React.FC<Props> = ({ isOpen, onCloseHandl
             open={isOpen}
         >
             <Box sx={{ padding: '10px' }}>
-                <DialogTitle>Select period for analise</DialogTitle>
+                <DialogTitle>{t('emotionPeriodPicker.selectPeriod')}</DialogTitle>
                 <DialogContent sx={{ overflow: 'hidden' }}>
                     <DateRangePicker
                         maxDate={new Date()}
@@ -61,8 +63,8 @@ export const EmotionPeriodPickerModal: React.FC<Props> = ({ isOpen, onCloseHandl
                     />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={onCloseHandler} variant={'contained'} color={'inherit'}>Cancel</Button>
-                    <Button onClick={onAnaliseClick} variant={'contained'}>Analise</Button>
+                    <Button onClick={onCloseHandler} variant={'contained'} color={'inherit'}>{t('emotionPeriodPicker.cancel')}</Button>
+                    <Button onClick={onAnaliseClick} variant={'contained'}>{t('emotionPeriodPicker.analyze')}</Button>
                 </DialogActions>
             </Box>
         </Dialog>

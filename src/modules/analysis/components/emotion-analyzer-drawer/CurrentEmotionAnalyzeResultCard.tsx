@@ -1,5 +1,6 @@
 import { Box, Divider, Typography } from '@mui/material';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { EmotionAnalyzeResult } from '../../models/EmotionAnalyzeResult.ts';
 import { useEmotionsStore } from '@emotions/state/useEmotionsStore.ts';
 import { EmotionAnalyzeResultCardFooter } from './EmotionAnalyzeResultCardFooter.tsx';
@@ -18,6 +19,7 @@ export const CurrentEmotionAnalyzeResultCard: React.FC<Props> = ({
     }
 }) => {
     const { emotions} = useEmotionsStore();
+    const { t } = useTranslation();
 
     const emotion = emotions.find(it => it.id === emotionId);
 
@@ -33,17 +35,17 @@ export const CurrentEmotionAnalyzeResultCard: React.FC<Props> = ({
             padding: '20px',
         }}>
             <Typography variant="h6" marginTop={'10px'} marginBottom={'10px'} fontWeight={'bold'}>
-                Analyze current emotion result
+                {t('analyzeResult.currentEmotionTitle')}
             </Typography>
             <Typography variant="subtitle1" marginTop={'10px'} fontWeight={'bold'}>
-                Emotion
+                {t('analyzeResult.emotion')}
             </Typography>
             <Typography variant="body2">
                 {emotion?.name}
             </Typography>
 
             <Typography variant="subtitle1" marginTop={'10px'} fontWeight={'bold'}>
-                Description
+                {t('analyzeResult.description')}
             </Typography>
             <Typography variant="body2">
                 {emotion?.description}
@@ -52,14 +54,14 @@ export const CurrentEmotionAnalyzeResultCard: React.FC<Props> = ({
             <Divider sx={{ marginTop: '20px', marginBottom: '20px' }}/>
 
             <Typography variant="subtitle1">
-                AI analyze
+                {t('analyzeResult.aiAnalyze')}
             </Typography>
 
             {
                 childNeed && (
                     <>
                         <Typography variant="subtitle1" marginTop={'10px'} fontWeight={'bold'}>
-                            Child need
+                            {t('analyzeResult.childNeed')}
                         </Typography>
                         <Typography variant="body2">
                             {childNeed}
@@ -72,7 +74,7 @@ export const CurrentEmotionAnalyzeResultCard: React.FC<Props> = ({
                 schema && (
                     <>
                         <Typography variant="subtitle1" marginTop={'10px'} fontWeight={'bold'}>
-                            Schema
+                            {t('analyzeResult.schema')}
                         </Typography>
                         <Typography variant="body2">
                             {schema}
@@ -85,7 +87,7 @@ export const CurrentEmotionAnalyzeResultCard: React.FC<Props> = ({
                 usefulConversation && (
                     <>
                         <Typography variant="subtitle1" marginTop={'10px'} fontWeight={'bold'}>
-                            Useful conversation
+                            {t('analyzeResult.usefulConversation')}
                         </Typography>
                         <Typography variant="body2">
                             {usefulConversation}
@@ -97,7 +99,7 @@ export const CurrentEmotionAnalyzeResultCard: React.FC<Props> = ({
                 futureActions && (
                     <>
                         <Typography variant="subtitle1" marginTop={'10px'} fontWeight={'bold'}>
-                            Future actions
+                            {t('analyzeResult.futureActions')}
                         </Typography>
                         <Typography variant="body2">
                             {futureActions}
