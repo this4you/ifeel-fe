@@ -21,7 +21,7 @@ export const EmotionAdviserModal: React.FC<Props> = ({ isOpen, onCloseHandler })
 
     useEffect(() => {
         loadEmotionAdvices();
-    }, [loadEmotionAdvices]);
+    }, []);
 
     return (
         <Dialog

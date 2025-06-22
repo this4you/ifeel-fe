@@ -2,7 +2,7 @@ import { Box, Stack, Typography, useTheme } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { MdOutlineCreate } from 'react-icons/md';
 import { MdDeleteOutline } from 'react-icons/md';
-import { LuDownloadCloud } from "react-icons/lu";
+import { LuDownload } from "react-icons/lu";
 import { CiViewList } from 'react-icons/ci';
 import { useEmotionSetsStore } from '../../state/useEmotionSetsStore.ts';
 import { EmotionsSetItem } from './EmotionsSetItem.tsx';
@@ -24,7 +24,7 @@ export const EmotionsSets: React.FC = () => {
 
     useEffect(() => {
         initEmotionSets()
-    }, [initEmotionSets]);
+    }, []);
 
     return (
         <Box sx={{
@@ -56,7 +56,7 @@ export const EmotionsSets: React.FC = () => {
                             cursor={'pointer'}
                             onClick={displayMoodSelector}
                         />
-                        <LuDownloadCloud
+                        <LuDownload
                             size={'20px'}
                             cursor={'pointer'}
                             onClick={exportReport}
